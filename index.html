@@ -22,25 +22,16 @@ header{
   text-align:center;
   padding:15px 0;
 }
-
 nav{
   display:flex;
   justify-content:center;
   gap:12px;
   flex-wrap:wrap;
 }
-
-/* 🔥 NAV FIX (TEAL) */
 nav a{
-  color:#00f5d4;
+  color:#fff;
   text-decoration:none;
   font-size:14px;
-  transition:0.3s ease;
-}
-
-nav a:hover{
-  color:#00ffe5;
-  text-shadow:0 0 8px rgba(0,255,229,0.6);
 }
 
 /* HERO */
@@ -108,6 +99,8 @@ iframe{
   height:160px;
   border:none;
   border-radius:12px;
+
+  /* ð¥ DARKEN MAP */
   filter:brightness(0.6) contrast(1.1) saturate(0.8);
   opacity:0.9;
 }
@@ -133,7 +126,7 @@ iframe{
   transform:scale(.96);
 }
 
-/* OVERLAY */
+/* ð¥ DARK OVERLAY */
 .visit-card::before{
   content:"";
   position:absolute;
@@ -272,13 +265,31 @@ iframe{
 </section>
 
 <section class="section">
+<div class="deals">
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166326/geekbar-ad_uuxqsz.png">
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166330/raz-ad_n40a57.png">
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166331/bundle-ad_qxcqcr.png">
+</div>
+</section>
+
+<section class="section">
+<div class="experience">
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166324/the-elite-experience_nz4xtu.png">
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166375/outside_wqh4vb.png">
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166379/inside-1_qwqhxc.png">
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166379/inside-2_hots3k.png">
+</div>
+</section>
+
+<!-- VISIT -->
+<section class="section">
 <div class="visit">
 
-<a href="#" class="visit-card">
+<a href="https://www.google.com/maps?q=Elite+House+Smoke+Shop+San+Juan" class="visit-card">
   <iframe src="https://www.google.com/maps?q=Elite+House+Smoke+Shop+San+Juan&output=embed"></iframe>
 </a>
 
-<a href="#" class="visit-card">
+<a href="https://www.google.com/maps/dir/?api=1&destination=Elite+House+Smoke+Shop+San+Juan" class="visit-card">
   <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166326/step-inside_u9hdex.png">
 </a>
 
