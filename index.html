@@ -10,227 +10,187 @@
 
 body {
   font-family: Arial, sans-serif;
-  background: url('https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto/v1777166332/vape-store-background_jwo2nr.png') center/cover fixed;
+  background:#000;
   color:#fff;
 }
 
-.overlay {
-  background: rgba(0,0,0,0.75);
-  min-height:100vh;
+.container {
+  width:90%;
+  max-width:1200px;
+  margin:auto;
 }
 
+/* NAV */
 header {
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:20px 40px;
+  padding:20px 0;
 }
 
 nav a {
-  margin-left:20px;
+  margin:0 15px;
   color:#fff;
   text-decoration:none;
-  font-weight:bold;
 }
 
-nav a:hover { color:#00ffe0; }
-
-.hero {
-  height:85vh;
-  min-height:600px;
-  max-height:900px;
-  background: url('https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto/v1777166401/smoke-shop-hero_agqdzt.png') center/cover no-repeat;
-  margin:0 40px 60px;
+/* HERO FIX (NO CROP) */
+.hero img {
+  width:100%;
+  height:auto;
   border-radius:12px;
-  overflow:hidden;
 }
 
+/* SECTIONS */
 .section {
-  padding:0 40px;
-  margin-bottom:60px;
+  margin:50px 0;
 }
 
 h2 {
   margin-bottom:20px;
 }
 
+/* BRANDS */
 .brands {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  flex-wrap:wrap;
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
   gap:20px;
+  align-items:center;
 }
 
 .brands img {
-  height:55px;
-}
-
-.deals {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
-}
-
-.deals img,
-.experience img,
-.visit img {
   width:100%;
-  border-radius:12px;
+  max-height:60px;
+  object-fit:contain;
 }
 
+/* DEALS (SLIDER MOBILE) */
+.deals {
+  display:flex;
+  gap:15px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
+}
+
+.deals::-webkit-scrollbar {
+  display:none;
+}
+
+.deals img {
+  flex:0 0 80%;
+  max-width:320px;
+  border-radius:12px;
+  scroll-snap-align:center;
+}
+
+/* DESKTOP DEAL GRID */
+@media(min-width:900px){
+  .deals {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    overflow:hidden;
+  }
+
+  .deals img {
+    max-width:100%;
+  }
+}
+
+/* EXPERIENCE */
 .experience {
   display:grid;
-  grid-template-columns:1fr 1fr;
+  grid-template-columns:repeat(2,1fr);
   gap:20px;
 }
 
 .experience img {
-  height:100%;
-  object-fit:cover;
+  width:100%;
+  border-radius:12px;
 }
 
+/* VISIT */
 .visit {
   display:grid;
   grid-template-columns:1fr 1.5fr 1fr;
   gap:20px;
-  align-items:center;
 }
 
+.visit img,
 iframe {
   width:100%;
-  height:350px;
-  border:none;
   border-radius:12px;
 }
 
-footer {
-  text-align:center;
-  padding:20px;
-  opacity:0.6;
-}
-
-/* AGE GATE */
-#ageGate {
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.96);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
-}
-
-.age-box {
-  width:90%;
-  max-width:420px;
-  text-align:center;
-  background:#111;
-  padding:40px;
-  border-radius:16px;
-  border:1px solid #00ffe0;
-  box-shadow:0 0 30px rgba(0,255,224,0.35);
-}
-
-.age-box h2 {
-  font-size:36px;
-  margin-bottom:15px;
-}
-
-.age-box p {
-  margin-bottom:25px;
-  line-height:1.5;
-}
-
-.age-buttons {
-  display:flex;
-  gap:15px;
-  justify-content:center;
-}
-
-.age-buttons button {
-  padding:12px 25px;
-  border:none;
-  border-radius:8px;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-.age-buttons button:first-child {
-  background:#00ffe0;
-  color:#000;
-}
-
-.age-buttons button:last-child {
-  background:#ff0055;
-  color:#fff;
-}
-
-@media (max-width:900px) {
-  header {
-    flex-direction:column;
-    gap:15px;
+/* MOBILE */
+@media(max-width:900px){
+  .brands {
+    grid-template-columns:repeat(2,1fr);
   }
 
-  nav {
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:15px;
-  }
-
-  nav a {
-    margin-left:0;
-  }
-
-  .hero {
-    height:70vh;
-    min-height:420px;
-    margin:0 20px 40px;
-  }
-
-  .section {
-    padding:0 20px;
-  }
-
-  .deals,
   .experience,
   .visit {
     grid-template-columns:1fr;
   }
+
+  nav {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+}
+
+/* AGE POPUP */
+.popup {
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:#000;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+}
+
+.popup button {
+  margin-top:20px;
+  padding:10px 20px;
+  border:none;
+  background:#00e0ff;
+  color:black;
 }
 </style>
 </head>
 
 <body>
 
-<div id="ageGate">
-  <div class="age-box">
-    <h2>21+ Only</h2>
-    <p>You must be 21 years or older to enter this site.</p>
-    <div class="age-buttons">
-      <button onclick="enterSite()">Enter</button>
-      <button onclick="exitSite()">Leave</button>
-    </div>
+<div class="popup" id="popup">
+  <div>
+    <h2>Are you 18+?</h2>
+    <button onclick="enter()">Enter</button>
   </div>
 </div>
 
-<div class="overlay">
+<div class="container">
 
 <header>
   <h1>Elite House</h1>
   <nav>
     <a href="#">Home</a>
-    <a href="#brands">Brands</a>
-    <a href="#deals">Deals</a>
-    <a href="#experience">Experience</a>
-    <a href="#visit">Location</a>
+    <a href="#">Brands</a>
+    <a href="#">Deals</a>
+    <a href="#">Experience</a>
+    <a href="#">Location</a>
   </nav>
 </header>
 
-<section class="hero"></section>
+<!-- HERO FIXED -->
+<section class="hero">
+  <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166401/smoke-shop-hero_agqdzt.png">
+</section>
 
-<section class="section" id="brands">
+<section class="section">
   <h2>Brands We Carry</h2>
   <div class="brands">
     <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166394/ChatGPT_Image_Apr_25_2026_08_04_39_PM_oasjiq.png">
@@ -241,7 +201,7 @@ footer {
   </div>
 </section>
 
-<section class="section" id="deals">
+<section class="section">
   <h2>Deals This Week</h2>
   <div class="deals">
     <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166326/geekbar-ad_uuxqsz.png">
@@ -250,7 +210,7 @@ footer {
   </div>
 </section>
 
-<section class="section" id="experience">
+<section class="section">
   <h2>The Elite Experience</h2>
   <div class="experience">
     <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166324/the-elite-experience_nz4xtu.png">
@@ -260,7 +220,7 @@ footer {
   </div>
 </section>
 
-<section class="section" id="visit">
+<section class="section">
   <h2>Visit Us</h2>
   <div class="visit">
     <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166306/visit-us_ihw6sf.png">
@@ -276,17 +236,8 @@ footer {
 </div>
 
 <script>
-function enterSite() {
-  localStorage.setItem("ageVerified", "true");
-  document.getElementById("ageGate").style.display = "none";
-}
-
-function exitSite() {
-  window.location.href = "https://www.google.com";
-}
-
-if (localStorage.getItem("ageVerified") === "true") {
-  document.getElementById("ageGate").style.display = "none";
+function enter(){
+  document.getElementById("popup").style.display="none";
 }
 </script>
 
