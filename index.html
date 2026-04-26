@@ -25,15 +25,8 @@ body{
   z-index:5;
   opacity:0;
 }
-
-.smoke.active{
-  opacity:0.25;
-  transition:opacity .3s ease;
-}
-
-.smoke.settle{
-  animation:smokeFade 2.5s ease forwards;
-}
+.smoke.active{ opacity:0.25; transition:opacity .3s ease; }
+.smoke.settle{ animation:smokeFade 2.5s ease forwards; }
 
 .smoke::before,
 .smoke::after{
@@ -44,36 +37,15 @@ body{
   background:url("https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166332/vape-store-background_jwo2nr.png") repeat;
   background-size:contain;
 }
+.smoke::before{ animation:drift1 3s ease forwards; }
+.smoke::after{ animation:drift2 3s ease forwards; opacity:0.4; }
 
-.smoke::before{
-  animation:drift1 3s ease forwards;
-}
-
-.smoke::after{
-  animation:drift2 3s ease forwards;
-  opacity:0.4;
-}
-
-@keyframes drift1{
-  from{transform:translate(0,0);}
-  to{transform:translate(-10%, -5%);}
-}
-
-@keyframes drift2{
-  from{transform:translate(0,0);}
-  to{transform:translate(10%, 5%);}
-}
-
-@keyframes smokeFade{
-  0%{opacity:0.25;}
-  100%{opacity:0;}
-}
+@keyframes drift1{ from{transform:translate(0,0);} to{transform:translate(-10%,-5%);} }
+@keyframes drift2{ from{transform:translate(0,0);} to{transform:translate(10%,5%);} }
+@keyframes smokeFade{ 0%{opacity:.25;} 100%{opacity:0;} }
 
 /* HEADER */
-header{
-  text-align:center;
-  padding:20px 0;
-}
+header{ text-align:center; padding:20px 0; }
 nav a{
   margin:0 8px;
   color:#fff;
@@ -82,17 +54,12 @@ nav a{
 }
 
 /* HERO */
-.hero img{
-  width:100%;
-  border-radius:12px;
-}
+.hero img{ width:100%; border-radius:12px; }
 
 /* SECTION */
-.section{
-  margin:35px 0;
-}
+.section{ margin:35px 0; }
 
-/* 🔥 BRANDS TITLE */
+/* 🔥 BRANDS TITLE (brush neon, no glow) */
 .section-title{
   font-family:'Permanent Marker', cursive;
   font-size:26px;
@@ -102,59 +69,54 @@ nav a{
   overflow:hidden;
   margin-bottom:20px;
 }
-
-/* smoke sweep */
 .section-title::after{
   content:"";
   position:absolute;
-  top:0;
-  left:-100%;
-  width:200%;
-  height:100%;
+  top:0; left:-100%;
+  width:200%; height:100%;
   background:linear-gradient(120deg,transparent,rgba(255,255,255,0.15),transparent);
   animation:smokeText 6s linear infinite;
 }
-
 @keyframes smokeText{
   from{transform:translateX(-100%);}
   to{transform:translateX(100%);}
 }
 
-/* SCROLL ROW */
+/* 🔥 SCROLL ROWS (gesture-locked) */
 .brands,
 .deals,
 .experience{
   display:flex;
   overflow-x:auto;
+  overflow-y:hidden;
+
+  touch-action:pan-x;
+  overscroll-behavior-x:contain;
+  overscroll-behavior-y:contain;
+
   scroll-snap-type:x proximity;
+  -webkit-overflow-scrolling:touch;
 }
 
-/* ITEMS */
 .brands img,
 .deals img,
 .experience img{
   scroll-snap-align:center;
   transition:.25s;
+  user-select:none;
+  -webkit-user-drag:none;
 }
 
 /* CENTER FOCUS */
-.active{
-  transform:scale(1.08);
-  filter:brightness(1.2);
-}
+.active{ transform:scale(1.08); filter:brightness(1.2); }
 
 /* SIZES */
-.brands img{
-  height:60px;
-  padding:0 10px;
-}
-
+.brands img{ height:60px; padding:0 10px; }
 .deals img{
   flex:0 0 85%;
   max-width:320px;
   border-radius:12px;
 }
-
 .experience img{
   flex:0 0 80%;
   max-width:300px;
@@ -167,24 +129,16 @@ nav a{
   grid-template-columns:1fr 1fr;
   gap:15px;
 }
-
 @media(max-width:600px){
-  .visit{
-    grid-template-columns:1fr;
-  }
+  .visit{ grid-template-columns:1fr; }
 }
-
 iframe{
   width:100%;
   height:250px;
   border:none;
   border-radius:12px;
 }
-
-.visit img{
-  width:100%;
-  border-radius:12px;
-}
+.visit img{ width:100%; border-radius:12px; }
 
 /* FOOTER */
 footer{
@@ -203,7 +157,6 @@ footer{
   align-items:center;
   z-index:999;
 }
-
 .popup-box{
   width:90%;
   max-width:320px;
@@ -212,17 +165,12 @@ footer{
   border-radius:14px;
   background:#111;
 }
-
-.popup-title{
-  font-size:22px;
-}
-
+.popup-title{ font-size:22px; }
 .popup-buttons{
   display:flex;
   gap:10px;
   margin-top:15px;
 }
-
 .enter-btn{
   flex:1;
   padding:10px;
@@ -230,7 +178,6 @@ footer{
   border:none;
   color:#fff;
 }
-
 .exit-btn{
   flex:1;
   padding:10px;
@@ -267,89 +214,139 @@ footer{
 </header>
 
 <section class="hero">
-<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166401/smoke-shop-hero_agqdzt.png">
+  <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166401/smoke-shop-hero_agqdzt.png">
 </section>
 
 <section class="section">
-<div class="section-title">Brands We Carry</div>
-<div class="brands">
-<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166394/ChatGPT_Image_Apr_25_2026_08_04_39_PM_oasjiq.png">
-<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166383/ChatGPT_Image_Apr_25_2026_08_04_53_PM_bbgx5p.png">
-<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166399/ChatGPT_Image_Apr_25_2026_08_04_30_PM_odwlza.png">
-<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166357/ChatGPT_Image_Apr_25_2026_08_04_22_PM_rzy4zs.png">
-<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166383/ChatGPT_Image_Apr_25_2026_08_15_55_PM_sirvsz.png">
-</div>
+  <div class="section-title">Brands We Carry</div>
+  <div class="brands">
+    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166394/ChatGPT_Image_Apr_25_2026_08_04_39_PM_oasjiq.png">
+    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166383/ChatGPT_Image_Apr_25_2026_08_04_53_PM_bbgx5p.png">
+    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166399/ChatGPT_Image_Apr_25_2026_08_04_30_PM_odwlza.png">
+    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166357/ChatGPT_Image_Apr_25_2026_08_04_22_PM_rzy4zs.png">
+    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166383/ChatGPT_Image_Apr_25_2026_08_15_55_PM_sirvsz.png">
+  </div>
 </section>
 
 <section class="section">
-<div class="deals">
-<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166326/geekbar-ad_uuxqsz.png">
-<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166330/raz-ad_n40a57.png">
-<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166331/bundle-ad_qxcqcr.png">
-</div>
+  <div class="deals">
+    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166326/geekbar-ad_uuxqsz.png">
+    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166330/raz-ad_n40a57.png">
+    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166331/bundle-ad_qxcqcr.png">
+  </div>
 </section>
 
 <section class="section">
-<div class="experience">
-<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166324/the-elite-experience_nz4xtu.png">
-<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166375/outside_wqh4vb.png">
-<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166379/inside-1_qwqhxc.png">
-<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166379/inside-2_hots3k.png">
-</div>
+  <div class="experience">
+    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166324/the-elite-experience_nz4xtu.png">
+    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166375/outside_wqh4vb.png">
+    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166379/inside-1_qwqhxc.png">
+    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166379/inside-2_hots3k.png">
+  </div>
 </section>
 
 <section class="section">
-<div class="visit">
-<iframe src="https://www.google.com/maps?q=Elite+House+Smoke+Shop+San+Juan&output=embed"></iframe>
-<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166326/step-inside_u9hdex.png">
-</div>
+  <div class="visit">
+    <iframe src="https://www.google.com/maps?q=Elite+House+Smoke+Shop+San+Juan&output=embed"></iframe>
+    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166326/step-inside_u9hdex.png">
+  </div>
 </section>
 
 <footer>
-© 2026 Elite House Smoke Shop
+  © 2026 Elite House Smoke Shop
 </footer>
 
 <script>
+// AGE + SMOKE ENTRY
 function enter(){
   const popup = document.getElementById("popup");
   const smoke = document.getElementById("smoke");
 
   popup.style.display = "none";
-
   smoke.classList.add("active");
 
-  setTimeout(()=>{
-    smoke.classList.add("settle");
-  },400);
-
-  setTimeout(()=>{
-    smoke.style.display="none";
-  },2800);
+  setTimeout(()=> smoke.classList.add("settle"), 400);
+  setTimeout(()=> smoke.style.display = "none", 2800);
 }
-
 function exitSite(){
-  window.location.href="https://google.com";
+  window.location.href = "https://google.com";
 }
 
-/* center focus */
+// CENTER FOCUS (all rows)
 function highlight(container){
   const center = container.scrollLeft + container.offsetWidth/2;
-
   [...container.children].forEach(el=>{
     const c = el.offsetLeft + el.offsetWidth/2;
-
-    if(Math.abs(center-c)<el.offsetWidth/2){
+    if(Math.abs(center - c) < el.offsetWidth/2){
       el.classList.add("active");
     } else {
       el.classList.remove("active");
     }
   });
 }
-
 [".brands",".deals",".experience"].forEach(sel=>{
   const el = document.querySelector(sel);
-  el.addEventListener("scroll",()=>highlight(el));
+  if(!el) return;
+  el.addEventListener("scroll", ()=>highlight(el));
 });
+
+// 🔥 AUTO-SCROLL ONLY FOR BRANDS (non-intrusive)
+(function initBrandsAuto(){
+  const el = document.querySelector(".brands");
+  if(!el) return;
+
+  // duplicate for seamless loop
+  el.innerHTML += el.innerHTML;
+
+  let pos = 0;
+  let interacting = false;
+  let last = Date.now();
+
+  function loop(){
+    const now = Date.now();
+    if(!interacting && now - last > 900){
+      pos += 0.2;                 // slower = more premium
+      el.scrollLeft = pos;
+
+      // seamless wrap
+      if(pos >= el.scrollWidth / 2){
+        pos = el.scrollLeft - el.scrollWidth / 2;
+      }
+    }
+    highlight(el);
+    requestAnimationFrame(loop);
+  }
+
+  // pause on user interaction
+  el.addEventListener("scroll", ()=>{
+    interacting = true;
+    last = Date.now();
+    pos = el.scrollLeft;
+
+    clearTimeout(el._t);
+    el._t = setTimeout(()=> interacting = false, 120);
+  });
+
+  ["touchstart","mousedown"].forEach(e=>{
+    el.addEventListener(e, ()=>{
+      interacting = true;
+      last = Date.now();
+    });
+  });
+
+  ["touchend","mouseup","mouseleave"].forEach(e=>{
+    el.addEventListener(e, ()=>{
+      last = Date.now();
+      setTimeout(()=> interacting = false, 300);
+    });
+  });
+
+  document.addEventListener("visibilitychange", ()=>{
+    interacting = document.hidden;
+  });
+
+  loop();
+})();
 </script>
 
 </body>
