@@ -14,22 +14,24 @@ body{
   font-family:Arial, sans-serif;
   background:#000;
   color:#fff;
+  overflow-x:hidden;
 }
 
-/* NAV */
+/* HEADER */
 header{
-  padding:12px;
+  text-align:center;
+  padding:15px 0;
 }
-
 nav{
   display:flex;
-  justify-content:space-around;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
 }
-
 nav a{
-  color:#00f5d4;
+  color:#fff;
   text-decoration:none;
-  font-size:13px;
+  font-size:14px;
 }
 
 /* HERO */
@@ -43,42 +45,46 @@ nav a{
 
 /* SECTION */
 .section{
-  margin:30px 12px;
+  margin:30px 15px;
 }
 
 /* TITLE */
 .section-title{
-  font-family:'Permanent Marker';
+  font-family:'Permanent Marker', cursive;
   font-size:26px;
   text-align:center;
   color:#b84cff;
-  margin-bottom:15px;
+  margin-bottom:20px;
 }
 
-/* SCROLL ROW */
-.scroll{
+/* SCROLL ROWS */
+.brands,
+.deals,
+.experience{
   display:flex;
   gap:12px;
   overflow-x:auto;
-  padding-bottom:10px;
+  scroll-snap-type:x proximity;
 }
 
-.scroll::-webkit-scrollbar{
+.brands::-webkit-scrollbar,
+.deals::-webkit-scrollbar,
+.experience::-webkit-scrollbar{
   display:none;
 }
 
 /* ITEMS */
-.scroll img{
-  flex:0 0 65%;
-  max-width:220px;
+.brands img,
+.deals img,
+.experience img{
+  scroll-snap-align:center;
   border-radius:12px;
 }
 
-/* BRANDS */
-.brands img{
-  flex:0 0 auto;
-  height:60px;
-}
+/* SIZES */
+.brands img{ height:70px; }
+.deals img{ flex:0 0 85%; max-width:320px; }
+.experience img{ flex:0 0 80%; max-width:300px; }
 
 /* VISIT */
 .visit{
@@ -87,66 +93,133 @@ nav a{
   gap:10px;
 }
 
+/* MAP */
 iframe{
   width:100%;
   height:160px;
   border:none;
   border-radius:12px;
-  filter:brightness(0.5);
+
+  /* ð¥ DARKEN MAP */
+  filter:brightness(0.6) contrast(1.1) saturate(0.8);
+  opacity:0.9;
 }
 
+/* IMAGE */
 .visit img{
   width:100%;
-  height:160px;
-  object-fit:cover;
+  max-height:160px;
+  object-fit:contain;
   border-radius:12px;
+}
+
+/* INTERACTIVE */
+.visit-card{
+  display:block;
+  position:relative;
+  border-radius:12px;
+  overflow:hidden;
+  transition:transform .2s ease;
+}
+
+.visit-card:active{
+  transform:scale(.96);
+}
+
+/* ð¥ DARK OVERLAY */
+.visit-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:12px;
+  background:rgba(0,0,0,0.25);
+  pointer-events:none;
+}
+
+/* GLOW */
+.visit-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:12px;
+  box-shadow:0 0 20px rgba(0,255,255,0.25);
+  opacity:0;
+  transition:.3s;
+}
+
+.visit-card:hover::after,
+.visit-card:active::after{
+  opacity:1;
+}
+
+/* allow click through iframe */
+.visit-card iframe{
+  pointer-events:none;
 }
 
 /* POPUP */
 .popup{
   position:fixed;
   inset:0;
+  background:#000;
   display:flex;
   justify-content:center;
   align-items:center;
-  background:black;
   z-index:999;
 }
 
 .popup-box{
   background:#111;
-  padding:25px;
+  padding:30px;
   border-radius:12px;
   text-align:center;
 }
 
 .popup-box h2{
-  color:#00f5d4;
-  font-family:'Permanent Marker';
+  color:#b84cff;
 }
 
 .popup-buttons{
-  margin-top:15px;
   display:flex;
   gap:10px;
+  justify-content:center;
+  margin-top:15px;
 }
 
-button{
-  flex:1;
-  padding:10px;
+.enter-btn,
+.exit-btn{
+  padding:10px 20px;
   border:none;
   border-radius:8px;
-}
-
-.enter-btn{
-  background:#00f5d4;
-  color:#000;
-}
-
-.exit-btn{
-  background:#333;
   color:#fff;
+  cursor:pointer;
 }
+
+.enter-btn{background:#b84cff;}
+.exit-btn{background:#333;}
+
+/* SMOKE */
+.smoke{
+  position:fixed;
+  inset:0;
+  background:url('https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166332/vape-store-background_jwo2nr.png') center/cover;
+  opacity:0;
+  pointer-events:none;
+  z-index:5;
+}
+
+.fade-in{animation:smokeIn 1.5s forwards;}
+.fade-out{animation:smokeOut 2s forwards;}
+
+@keyframes smokeIn{
+  from{opacity:0;}
+  to{opacity:.6;}
+}
+@keyframes smokeOut{
+  from{opacity:.6;}
+  to{opacity:0;}
+}
+
 </style>
 </head>
 
@@ -155,9 +228,8 @@ button{
 <!-- POPUP -->
 <div class="popup" id="popup">
   <div class="popup-box">
-    <h2>Elite House</h2>
-    <p>21+ Only</p>
-
+    <h2>21+ Only</h2>
+    <p>Are you 21 years or older?</p>
     <div class="popup-buttons">
       <button class="enter-btn" onclick="enter()">Enter</button>
       <button class="exit-btn" onclick="exitSite()">No</button>
@@ -165,58 +237,47 @@ button{
   </div>
 </div>
 
+<div class="smoke" id="smoke"></div>
+
 <header>
-<nav>
-<a href="#">Home</a>
-<a href="#">Brands</a>
-<a href="#">Deals</a>
-<a href="#">Experience</a>
-<a href="#">Location</a>
-</nav>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Brands</a>
+    <a href="#">Deals</a>
+    <a href="#">Experience</a>
+    <a href="#">Location</a>
+  </nav>
 </header>
 
-<!-- HERO -->
 <section class="hero">
 <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166401/smoke-shop-hero_agqdzt.png">
 </section>
 
-<!-- BRANDS -->
 <section class="section">
 <div class="section-title">Brands We Carry</div>
-<div class="scroll brands">
-
+<div class="brands">
 <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166394/ChatGPT_Image_Apr_25_2026_08_04_39_PM_oasjiq.png">
 <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166383/ChatGPT_Image_Apr_25_2026_08_04_53_PM_bbgx5p.png">
 <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166399/ChatGPT_Image_Apr_25_2026_08_04_30_PM_odwlza.png">
-
-</div>
-</section>
-
-<!-- DEALS -->
-<section class="section">
-<div class="section-title">🔥 Deals</div>
-<div class="scroll">
-
-<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166399/ChatGPT_Image_Apr_25_2026_08_04_30_PM_odwlza.png">
-
-<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166401/smoke-shop-hero_agqdzt.png">
-
-<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166326/step-inside_u9hdex.png">
-
-</div>
-</section>
-
-<!-- EXPERIENCE -->
-<section class="section">
-<div class="section-title">✨ Experience</div>
-<div class="scroll">
-
-<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166394/ChatGPT_Image_Apr_25_2026_08_04_39_PM_oasjiq.png">
-
 <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166357/ChatGPT_Image_Apr_25_2026_08_04_22_PM_rzy4zs.png">
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166383/ChatGPT_Image_Apr_25_2026_08_15_55_PM_sirvsz.png">
+</div>
+</section>
 
-<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166383/ChatGPT_Image_Apr_25_2026_08_04_53_PM_bbgx5p.png">
+<section class="section">
+<div class="deals">
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166326/geekbar-ad_uuxqsz.png">
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166330/raz-ad_n40a57.png">
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166331/bundle-ad_qxcqcr.png">
+</div>
+</section>
 
+<section class="section">
+<div class="experience">
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166324/the-elite-experience_nz4xtu.png">
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166375/outside_wqh4vb.png">
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166379/inside-1_qwqhxc.png">
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166379/inside-2_hots3k.png">
 </div>
 </section>
 
@@ -224,12 +285,12 @@ button{
 <section class="section">
 <div class="visit">
 
-<a href="https://www.google.com/maps?q=Elite+House+Smoke+Shop+San+Juan">
-<iframe src="https://www.google.com/maps?q=Elite+House+Smoke+Shop+San+Juan&output=embed"></iframe>
+<a href="https://www.google.com/maps?q=Elite+House+Smoke+Shop+San+Juan" class="visit-card">
+  <iframe src="https://www.google.com/maps?q=Elite+House+Smoke+Shop+San+Juan&output=embed"></iframe>
 </a>
 
-<a href="https://www.google.com/maps/dir/?api=1&destination=Elite+House+Smoke+Shop+San+Juan">
-<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166326/step-inside_u9hdex.png">
+<a href="https://www.google.com/maps/dir/?api=1&destination=Elite+House+Smoke+Shop+San+Juan" class="visit-card">
+  <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166326/step-inside_u9hdex.png">
 </a>
 
 </div>
@@ -238,7 +299,16 @@ button{
 <script>
 function enter(){
   document.getElementById("popup").style.display="none";
+
+  const smoke = document.getElementById("smoke");
+  smoke.classList.add("fade-in");
+
+  setTimeout(()=>{
+    smoke.classList.remove("fade-in");
+    smoke.classList.add("fade-out");
+  },1200);
 }
+
 function exitSite(){
   window.location.href="https://google.com";
 }
