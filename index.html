@@ -15,7 +15,7 @@ body{
   overflow-x:hidden;
 }
 
-/* SMOKE */
+/* 🔥 SMOKE */
 .smoke{
   position:fixed;
   inset:0;
@@ -23,7 +23,6 @@ body{
   z-index:0;
   opacity:0.08;
 }
-
 .smoke::before,
 .smoke::after{
   content:"";
@@ -34,23 +33,20 @@ body{
   background-size:contain;
   animation:smokeMove 80s linear infinite;
 }
-
 .smoke::after{
   animation-direction:reverse;
   opacity:0.4;
 }
-
 @keyframes smokeMove{
   from{transform:translate(0,0);}
   to{transform:translate(-20%, -20%);}
 }
 
-/* CONTENT LAYER */
+/* CONTENT ABOVE SMOKE */
 .container, header, section, footer{
   position:relative;
   z-index:2;
 }
-
 .container{
   width:92%;
   margin:auto;
@@ -61,7 +57,6 @@ header{
   text-align:center;
   padding:20px 0;
 }
-
 nav a{
   margin:0 8px;
   color:#fff;
@@ -87,7 +82,7 @@ nav a{
   font-size:22px;
 }
 
-/* 🔥 LUXURY SCROLL */
+/* SCROLL ROW */
 .brands,
 .deals,
 .experience{
@@ -102,10 +97,10 @@ nav a{
 .deals img,
 .experience img{
   scroll-snap-align:center;
-  transition:all .25s ease;
+  transition:.25s;
 }
 
-/* INTERACTION */
+/* HOVER */
 .brands img:hover,
 .deals img:hover,
 .experience img:hover{
@@ -119,18 +114,16 @@ nav a{
   filter:brightness(1.2);
 }
 
-/* SIZING */
+/* SIZES */
 .brands img{
   height:60px;
   padding:0 10px;
 }
-
 .deals img{
   flex:0 0 85%;
   max-width:320px;
   border-radius:12px;
 }
-
 .experience img{
   flex:0 0 80%;
   max-width:300px;
@@ -142,28 +135,23 @@ nav a{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:15px;
-  align-items:center;
 }
-
 @media(max-width:600px){
   .visit{
     grid-template-columns:1fr;
   }
 }
-
 iframe{
   width:100%;
   height:250px;
   border:none;
   border-radius:12px;
 }
-
 .visit img{
   width:100%;
   border-radius:12px;
   transition:.3s;
 }
-
 .visit img:hover{
   transform:scale(1.03);
   box-shadow:0 0 20px rgba(184,76,255,0.3);
@@ -197,7 +185,6 @@ footer{
   align-items:center;
   z-index:999;
 }
-
 .popup-box{
   width:90%;
   max-width:320px;
@@ -207,18 +194,14 @@ footer{
   background:#111;
   box-shadow:0 0 20px rgba(184,76,255,0.4);
 }
-
 .popup-title{
   font-size:22px;
-  margin-bottom:10px;
 }
-
 .popup-buttons{
   display:flex;
   gap:10px;
   margin-top:15px;
 }
-
 .enter-btn{
   flex:1;
   padding:10px;
@@ -227,7 +210,6 @@ footer{
   color:#fff;
   border-radius:6px;
 }
-
 .exit-btn{
   flex:1;
   padding:10px;
@@ -321,7 +303,76 @@ function exitSite(){
   window.location.href="https://google.com";
 }
 
-// FADE IN
+// 🔥 AUTO CAROUSEL (SMOOTH + NO GLITCH)
+function initCarousel(selector){
+  const el = document.querySelector(selector);
+  if(!el) return;
+
+  el.innerHTML += el.innerHTML;
+
+  let pos = 0;
+  let interacting = false;
+  let last = Date.now();
+
+  function loop(){
+    if(!interacting && Date.now()-last > 800){
+      pos += 0.25;
+      el.scrollLeft = pos;
+
+      if(pos >= el.scrollWidth/2){
+        pos = el.scrollLeft - el.scrollWidth/2;
+      }
+    }
+
+    highlight(el);
+    requestAnimationFrame(loop);
+  }
+
+  el.addEventListener("scroll",()=>{
+    interacting = true;
+    last = Date.now();
+    pos = el.scrollLeft;
+
+    clearTimeout(el.timer);
+    el.timer = setTimeout(()=>interacting=false,120);
+  });
+
+  ["touchstart","mousedown"].forEach(e=>{
+    el.addEventListener(e,()=>{
+      interacting = true;
+      last = Date.now();
+    });
+  });
+
+  ["touchend","mouseup","mouseleave"].forEach(e=>{
+    el.addEventListener(e,()=>{
+      last = Date.now();
+      setTimeout(()=>interacting=false,300);
+    });
+  });
+
+  document.addEventListener("visibilitychange",()=>{
+    interacting = document.hidden;
+  });
+
+  loop();
+}
+
+// ACTIVE CENTER SCALE
+function highlight(container){
+  const center = container.scrollLeft + container.offsetWidth/2;
+
+  [...container.children].forEach(el=>{
+    const c = el.offsetLeft + el.offsetWidth/2;
+    if(Math.abs(center-c)<el.offsetWidth/2){
+      el.classList.add("active");
+    } else {
+      el.classList.remove("active");
+    }
+  });
+}
+
+// FADE
 const observer = new IntersectionObserver(entries=>{
   entries.forEach(e=>{
     if(e.isIntersecting){
@@ -332,23 +383,10 @@ const observer = new IntersectionObserver(entries=>{
 
 document.querySelectorAll(".fade").forEach(el=>observer.observe(el));
 
-// ACTIVE CENTER SCALE
-function highlight(container){
-  const center = container.scrollLeft + container.offsetWidth/2;
-  [...container.children].forEach(el=>{
-    const box = el.offsetLeft + el.offsetWidth/2;
-    if(Math.abs(center - box) < el.offsetWidth/2){
-      el.classList.add("active");
-    } else {
-      el.classList.remove("active");
-    }
-  });
-}
-
-[".brands",".deals",".experience"].forEach(sel=>{
-  const el=document.querySelector(sel);
-  el.addEventListener("scroll",()=>highlight(el));
-});
+// INIT
+initCarousel(".brands");
+initCarousel(".deals");
+initCarousel(".experience");
 </script>
 
 </body>
