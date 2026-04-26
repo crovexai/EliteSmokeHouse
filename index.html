@@ -6,14 +6,11 @@
 
 <title>Elite House</title>
 
-<!-- BRUSH FONT -->
-<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
-
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
-  font-family:Arial;
+  font-family:Arial, sans-serif;
   background:#000;
   color:#fff;
 
@@ -27,7 +24,7 @@ body::-webkit-scrollbar{display:none;}
   margin:auto;
 }
 
-/* NAV */
+/* HEADER */
 header{
   text-align:center;
   padding:20px 0;
@@ -51,41 +48,39 @@ nav a{
   margin:35px 0;
 }
 
-/* 🔥 BRUSH NEON TITLE */
+/* CLEAN TITLE */
 .section-title{
-  font-family:'Permanent Marker', cursive;
-  font-size:26px;
-  letter-spacing:1px;
-
-  color:#b84cff;
-
-  text-shadow:
-    0 0 6px #b84cff,
-    0 0 12px #b84cff,
-    0 0 20px rgba(184,76,255,0.6);
-
-  margin-bottom:15px;
+  font-size:22px;
+  font-weight:600;
+  text-align:center;
+  margin-bottom:20px;
 }
 
-/* BRANDS */
-.brands{
+/* SCROLL ROWS */
+.brands,
+.deals,
+.experience{
   display:flex;
-  gap:25px;
   overflow-x:auto;
+  gap:0;
+  scroll-snap-type:x mandatory;
 }
 
+.brands img,
+.deals img,
+.experience img{
+  margin:0;
+  scroll-snap-align:start;
+}
+
+/* BRANDS BIGGER */
 .brands img{
-  height:40px;
+  height:60px;
   flex:0 0 auto;
+  padding:0 12px;
 }
 
 /* DEALS */
-.deals{
-  display:flex;
-  gap:15px;
-  overflow-x:auto;
-}
-
 .deals img{
   flex:0 0 85%;
   max-width:320px;
@@ -93,12 +88,6 @@ nav a{
 }
 
 /* EXPERIENCE */
-.experience{
-  display:flex;
-  gap:15px;
-  overflow-x:auto;
-}
-
 .experience img{
   flex:0 0 80%;
   max-width:300px;
@@ -131,24 +120,68 @@ footer{
   opacity:0.6;
 }
 
-/* AGE POPUP */
+/* 🔥 AGE POPUP */
 .popup{
   position:fixed;
   inset:0;
-  background:#000;
+  background:rgba(0,0,0,0.95);
   display:flex;
   justify-content:center;
   align-items:center;
   z-index:999;
 }
 
-.popup button{
-  margin-top:15px;
-  padding:10px 25px;
+.popup-box{
+  width:90%;
+  max-width:320px;
+  padding:30px 20px;
+  text-align:center;
+  border-radius:14px;
+
+  background:linear-gradient(145deg,#0a0a0a,#000);
+
+  box-shadow:
+    0 0 15px rgba(184,76,255,0.3),
+    0 0 40px rgba(0,255,255,0.1);
+}
+
+.popup-title{
+  font-size:24px;
+  font-weight:700;
+  background:linear-gradient(90deg,#00f0ff,#b84cff,#ff7a00);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  margin-bottom:10px;
+}
+
+.popup-sub{
+  font-size:14px;
+  opacity:0.7;
+  margin-bottom:20px;
+}
+
+.popup-buttons{
+  display:flex;
+  gap:10px;
+}
+
+.enter-btn{
+  flex:1;
+  padding:10px;
   border:none;
-  background:#b84cff;
+  border-radius:8px;
+  background:linear-gradient(90deg,#00f0ff,#b84cff);
   color:#fff;
-  border-radius:6px;
+  font-weight:600;
+}
+
+.exit-btn{
+  flex:1;
+  padding:10px;
+  border-radius:8px;
+  border:1px solid rgba(255,255,255,0.2);
+  background:transparent;
+  color:#fff;
 }
 
 /* DESKTOP */
@@ -162,11 +195,13 @@ footer{
   .deals{
     display:grid;
     grid-template-columns:repeat(3,1fr);
+    gap:15px;
   }
 
   .experience{
     display:grid;
     grid-template-columns:repeat(4,1fr);
+    gap:15px;
   }
 
   .experience img{
@@ -184,11 +219,18 @@ footer{
 
 <body>
 
-<!-- AGE -->
+<!-- 🔥 AGE GATE -->
 <div class="popup" id="popup">
-  <div>
-    <h2>18+ Only</h2>
-    <button onclick="enter()">Enter</button>
+  <div class="popup-box">
+    <div class="popup-title">Are You 18+?</div>
+    <div class="popup-sub">
+      This experience is only for adults.<br>
+      Enter if you're ready.
+    </div>
+    <div class="popup-buttons">
+      <button class="enter-btn" onclick="enter()">Yes, Enter</button>
+      <button class="exit-btn" onclick="exitSite()">No</button>
+    </div>
   </div>
 </div>
 
@@ -210,7 +252,7 @@ footer{
 <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166401/smoke-shop-hero_agqdzt.png">
 </section>
 
-<!-- 🔥 BRANDS -->
+<!-- BRANDS -->
 <section class="section">
 <div class="section-title">Brands We Carry</div>
 
@@ -264,6 +306,10 @@ footer{
 <script>
 function enter(){
   document.getElementById("popup").style.display="none";
+}
+
+function exitSite(){
+  window.location.href = "https://www.google.com";
 }
 </script>
 
