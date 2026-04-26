@@ -3,17 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Elite House</title>
+
+<!-- BRUSH FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
   font-family:Arial;
-  color:#fff;
   background:#000;
+  color:#fff;
 
-  /* REMOVE SCROLLBAR */
   -ms-overflow-style:none;
   scrollbar-width:none;
 }
@@ -40,7 +43,6 @@ nav a{
 /* HERO */
 .hero img{
   width:100%;
-  height:auto;
   border-radius:12px;
 }
 
@@ -49,20 +51,18 @@ nav a{
   margin:35px 0;
 }
 
-/* ===== NEON TITLE (ONLY USED ON BRANDS) ===== */
+/* 🔥 BRUSH NEON TITLE */
 .section-title{
-  font-size:28px;
-  font-weight:900;
+  font-family:'Permanent Marker', cursive;
+  font-size:26px;
   letter-spacing:1px;
 
-  background: linear-gradient(90deg,#00e0ff,#b84cff,#ff7a00);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
+  color:#b84cff;
 
   text-shadow:
-    0 0 10px rgba(0,224,255,0.6),
-    0 0 20px rgba(184,76,255,0.6),
-    0 0 30px rgba(255,122,0,0.4);
+    0 0 6px #b84cff,
+    0 0 12px #b84cff,
+    0 0 20px rgba(184,76,255,0.6);
 
   margin-bottom:15px;
 }
@@ -79,7 +79,7 @@ nav a{
   flex:0 0 auto;
 }
 
-/* DEALS (SCROLL SLIDER) */
+/* DEALS */
 .deals{
   display:flex;
   gap:15px;
@@ -92,7 +92,7 @@ nav a{
   border-radius:12px;
 }
 
-/* EXPERIENCE (SCROLL ROW) */
+/* EXPERIENCE */
 .experience{
   display:flex;
   gap:15px;
@@ -120,8 +120,8 @@ nav a{
 iframe{
   width:100%;
   height:250px;
-  border-radius:12px;
   border:none;
+  border-radius:12px;
 }
 
 /* FOOTER */
@@ -146,8 +146,8 @@ footer{
   margin-top:15px;
   padding:10px 25px;
   border:none;
-  background:#00e0ff;
-  color:#000;
+  background:#b84cff;
+  color:#fff;
   border-radius:6px;
 }
 
@@ -210,7 +210,7 @@ footer{
 <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166401/smoke-shop-hero_agqdzt.png">
 </section>
 
-<!-- BRANDS (ONLY TITLE LEFT) -->
+<!-- 🔥 BRANDS -->
 <section class="section">
 <div class="section-title">Brands We Carry</div>
 
@@ -223,7 +223,7 @@ footer{
 </div>
 </section>
 
-<!-- DEALS (NO TITLE) -->
+<!-- DEALS -->
 <section class="section">
 <div class="deals">
 <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166326/geekbar-ad_uuxqsz.png">
@@ -232,7 +232,7 @@ footer{
 </div>
 </section>
 
-<!-- EXPERIENCE (NO TITLE) -->
+<!-- EXPERIENCE -->
 <section class="section">
 <div class="experience">
 <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166324/the-elite-experience_nz4xtu.png">
