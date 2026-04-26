@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Elite House</title>
 
 <style>
@@ -13,19 +12,16 @@ body{
   font-family:Arial, sans-serif;
   background:#000;
   color:#fff;
-
-  -ms-overflow-style:none;
-  scrollbar-width:none;
+  overflow-x:hidden;
 }
-body::-webkit-scrollbar{display:none;}
 
-/* 🔥 SMOKE LAYER */
+/* SMOKE */
 .smoke{
   position:fixed;
   inset:0;
   pointer-events:none;
   z-index:0;
-  opacity:0.12;
+  opacity:0.08;
 }
 
 .smoke::before,
@@ -36,24 +32,21 @@ body::-webkit-scrollbar{display:none;}
   height:200%;
   background:url("https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166332/vape-store-background_jwo2nr.png") repeat;
   background-size:contain;
-  animation:smokeMove 60s linear infinite;
+  animation:smokeMove 80s linear infinite;
 }
 
 .smoke::after{
   animation-direction:reverse;
-  opacity:0.6;
+  opacity:0.4;
 }
 
 @keyframes smokeMove{
   from{transform:translate(0,0);}
-  to{transform:translate(-25%, -25%);}
+  to{transform:translate(-20%, -20%);}
 }
 
-/* CONTENT ABOVE SMOKE */
-.container,
-header,
-section,
-footer{
+/* CONTENT LAYER */
+.container, header, section, footer{
   position:relative;
   z-index:2;
 }
@@ -79,53 +72,65 @@ nav a{
 /* HERO */
 .hero img{
   width:100%;
-  border-radius:12px;
+  border-radius:14px;
 }
 
 /* SECTION */
 .section{
-  margin:35px 0;
+  margin:40px 0;
 }
 
 /* TITLE */
 .section-title{
-  font-size:22px;
-  font-weight:600;
   text-align:center;
   margin-bottom:20px;
+  font-size:22px;
 }
 
-/* SCROLL ROWS */
+/* 🔥 LUXURY SCROLL */
 .brands,
 .deals,
 .experience{
   display:flex;
   overflow-x:auto;
-  gap:0;
-  scroll-behavior:auto;
+  scroll-snap-type:x proximity;
+  -webkit-overflow-scrolling:touch;
 }
 
+/* ITEMS */
 .brands img,
 .deals img,
 .experience img{
-  margin:0;
+  scroll-snap-align:center;
+  transition:all .25s ease;
 }
 
-/* BRANDS */
+/* INTERACTION */
+.brands img:hover,
+.deals img:hover,
+.experience img:hover{
+  transform:translateY(-5px) scale(1.03);
+  filter:brightness(1.1);
+}
+
+/* ACTIVE CENTER */
+.active{
+  transform:scale(1.08) !important;
+  filter:brightness(1.2);
+}
+
+/* SIZING */
 .brands img{
   height:60px;
-  flex:0 0 auto;
-  padding:0 12px;
+  padding:0 10px;
 }
 
-/* DEALS */
 .deals img{
   flex:0 0 85%;
   max-width:320px;
   border-radius:12px;
 }
 
-/* EXPERIENCE */
 .experience img{
   flex:0 0 80%;
   max-width:300px;
@@ -146,11 +151,6 @@ nav a{
   }
 }
 
-.visit img{
-  width:100%;
-  border-radius:12px;
-}
-
 iframe{
   width:100%;
   height:250px;
@@ -158,18 +158,40 @@ iframe{
   border-radius:12px;
 }
 
+.visit img{
+  width:100%;
+  border-radius:12px;
+  transition:.3s;
+}
+
+.visit img:hover{
+  transform:scale(1.03);
+  box-shadow:0 0 20px rgba(184,76,255,0.3);
+}
+
+/* FADE IN */
+.fade{
+  opacity:0;
+  transform:translateY(20px);
+  transition:.6s;
+}
+.fade.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
 /* FOOTER */
 footer{
   text-align:center;
-  padding:25px;
+  padding:30px;
   opacity:0.6;
 }
 
-/* 🔥 POPUP */
+/* POPUP */
 .popup{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,0.95);
+  background:#000;
   display:flex;
   justify-content:center;
   align-items:center;
@@ -179,53 +201,40 @@ footer{
 .popup-box{
   width:90%;
   max-width:320px;
-  padding:30px 20px;
+  padding:30px;
   text-align:center;
   border-radius:14px;
-
-  background:linear-gradient(145deg,#0a0a0a,#000);
-
-  box-shadow:
-    0 0 15px rgba(184,76,255,0.3),
-    0 0 40px rgba(0,255,255,0.1);
+  background:#111;
+  box-shadow:0 0 20px rgba(184,76,255,0.4);
 }
 
 .popup-title{
-  font-size:24px;
-  font-weight:700;
-  background:linear-gradient(90deg,#00f0ff,#b84cff,#ff7a00);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
+  font-size:22px;
   margin-bottom:10px;
-}
-
-.popup-sub{
-  font-size:14px;
-  opacity:0.7;
-  margin-bottom:20px;
 }
 
 .popup-buttons{
   display:flex;
   gap:10px;
+  margin-top:15px;
 }
 
 .enter-btn{
   flex:1;
   padding:10px;
+  background:#b84cff;
   border:none;
-  border-radius:8px;
-  background:linear-gradient(90deg,#00f0ff,#b84cff);
   color:#fff;
+  border-radius:6px;
 }
 
 .exit-btn{
   flex:1;
   padding:10px;
-  border-radius:8px;
-  border:1px solid rgba(255,255,255,0.2);
-  background:transparent;
+  border:1px solid #555;
+  background:none;
   color:#fff;
+  border-radius:6px;
 }
 </style>
 </head>
@@ -234,11 +243,10 @@ footer{
 
 <div class="smoke"></div>
 
-<!-- AGE GATE -->
+<!-- AGE -->
 <div class="popup" id="popup">
   <div class="popup-box">
     <div class="popup-title">Are You 18+?</div>
-    <div class="popup-sub">This experience is only for adults.</div>
     <div class="popup-buttons">
       <button class="enter-btn" onclick="enter()">Yes</button>
       <button class="exit-btn" onclick="exitSite()">No</button>
@@ -259,11 +267,11 @@ footer{
   </nav>
 </header>
 
-<section class="hero">
+<section class="hero fade">
 <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166401/smoke-shop-hero_agqdzt.png">
 </section>
 
-<section class="section">
+<section class="section fade">
 <div class="section-title">Brands We Carry</div>
 <div class="brands">
 <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166394/ChatGPT_Image_Apr_25_2026_08_04_39_PM_oasjiq.png">
@@ -274,7 +282,7 @@ footer{
 </div>
 </section>
 
-<section class="section">
+<section class="section fade">
 <div class="deals">
 <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166326/geekbar-ad_uuxqsz.png">
 <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166330/raz-ad_n40a57.png">
@@ -282,7 +290,7 @@ footer{
 </div>
 </section>
 
-<section class="section">
+<section class="section fade">
 <div class="experience">
 <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166324/the-elite-experience_nz4xtu.png">
 <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166375/outside_wqh4vb.png">
@@ -291,7 +299,7 @@ footer{
 </div>
 </section>
 
-<section class="section">
+<section class="section fade">
 <div class="visit">
 <iframe src="https://www.google.com/maps?q=Elite+House+Smoke+Shop+San+Juan&output=embed"></iframe>
 <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166326/step-inside_u9hdex.png">
@@ -310,47 +318,37 @@ function enter(){
   document.getElementById("popup").style.display="none";
 }
 function exitSite(){
-  window.location.href="https://www.google.com";
+  window.location.href="https://google.com";
 }
 
-// AUTO CAROUSEL
-function initCarousel(selector){
-  const el=document.querySelector(selector);
-  if(!el) return;
-
-  el.innerHTML+=el.innerHTML;
-
-  let pos=0;
-  let interacting=false;
-
-  function loop(){
-    if(!interacting){
-      pos+=0.3;
-      el.scrollLeft=pos;
-
-      if(pos>=el.scrollWidth/2){
-        pos=0;
-      }
+// FADE IN
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add("show");
     }
-    requestAnimationFrame(loop);
-  }
-
-  el.addEventListener("touchstart",()=>interacting=true);
-  el.addEventListener("mousedown",()=>interacting=true);
-
-  el.addEventListener("touchend",()=>setTimeout(()=>interacting=false,1200));
-  el.addEventListener("mouseup",()=>setTimeout(()=>interacting=false,1200));
-
-  document.addEventListener("visibilitychange",()=>{
-    interacting=document.hidden;
   });
+},{threshold:.2});
 
-  loop();
+document.querySelectorAll(".fade").forEach(el=>observer.observe(el));
+
+// ACTIVE CENTER SCALE
+function highlight(container){
+  const center = container.scrollLeft + container.offsetWidth/2;
+  [...container.children].forEach(el=>{
+    const box = el.offsetLeft + el.offsetWidth/2;
+    if(Math.abs(center - box) < el.offsetWidth/2){
+      el.classList.add("active");
+    } else {
+      el.classList.remove("active");
+    }
+  });
 }
 
-initCarousel(".brands");
-initCarousel(".deals");
-initCarousel(".experience");
+[".brands",".deals",".experience"].forEach(sel=>{
+  const el=document.querySelector(sel);
+  el.addEventListener("scroll",()=>highlight(el));
+});
 </script>
 
 </body>
