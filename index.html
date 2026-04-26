@@ -8,128 +8,88 @@
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   font-family: Arial, sans-serif;
   background: url('https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto/v1777166332/vape-store-background_jwo2nr.png') center/cover fixed;
   color:#fff;
 }
 
-/* OVERLAY */
 .overlay {
   background: rgba(0,0,0,0.75);
   min-height:100vh;
 }
 
-/* CONTAINER */
-.container {
-  width:90%;
-  max-width:1200px;
-  margin:auto;
-}
-
-/* NAV */
 header {
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:20px 0;
+  padding:20px 40px;
 }
 
 nav a {
-  margin:0 15px;
+  margin-left:20px;
   color:#fff;
   text-decoration:none;
   font-weight:bold;
-  transition:0.3s;
 }
 
-nav a:hover {
-  color:#00ffe0;
-}
+nav a:hover { color:#00ffe0; }
 
-/* HERO */
 .hero {
-  position: relative;
-  height:80vh;
-  background:url('https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto/v1777166401/smoke-shop-hero_agqdzt.png') center/cover no-repeat;
+  height:85vh;
+  min-height:600px;
+  max-height:900px;
+  background: url('https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto/v1777166401/smoke-shop-hero_agqdzt.png') center/cover no-repeat;
+  margin:0 40px 60px;
   border-radius:12px;
-  margin-bottom:40px;
+  overflow:hidden;
 }
 
-.hero::after {
-  content:"";
-  position:absolute;
-  inset:0;
-  background: linear-gradient(to right, rgba(0,0,0,0.85), rgba(0,0,0,0.2));
-  border-radius:12px;
-}
-
-/* SECTIONS */
 .section {
-  margin:60px 0;
+  padding:0 40px;
+  margin-bottom:60px;
 }
 
 h2 {
   margin-bottom:20px;
-  font-size:28px;
 }
 
-/* BRANDS */
 .brands {
   display:flex;
-  gap:20px;
-  flex-wrap:wrap;
   justify-content:space-between;
   align-items:center;
+  flex-wrap:wrap;
+  gap:20px;
 }
 
 .brands img {
-  height:60px;
-  object-fit:contain;
-  filter:brightness(0.9);
-  transition:0.3s;
+  height:55px;
 }
 
-.brands img:hover {
-  transform:scale(1.1);
-  filter:brightness(1.3) drop-shadow(0 0 10px #00ffe0);
-}
-
-/* DEALS */
 .deals {
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:20px;
 }
 
-.deals img {
+.deals img,
+.experience img,
+.visit img {
   width:100%;
   border-radius:12px;
-  transition:0.3s;
 }
 
-.deals img:hover {
-  transform:scale(1.03);
-  box-shadow:0 0 20px rgba(0,255,200,0.5);
-}
-
-/* EXPERIENCE */
 .experience {
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+  grid-template-columns:1fr 1fr;
   gap:20px;
 }
 
 .experience img {
-  width:100%;
-  border-radius:12px;
+  height:100%;
+  object-fit:cover;
 }
 
-/* VISIT */
 .visit {
   display:grid;
   grid-template-columns:1fr 1.5fr 1fr;
@@ -137,28 +97,102 @@ h2 {
   align-items:center;
 }
 
-.visit img {
-  width:100%;
-  border-radius:12px;
-}
-
 iframe {
   width:100%;
-  height:100%;
+  height:350px;
   border:none;
   border-radius:12px;
 }
 
-/* FOOTER */
 footer {
   text-align:center;
   padding:20px;
-  margin-top:40px;
   opacity:0.6;
 }
 
-/* MOBILE */
+/* AGE GATE */
+#ageGate {
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.96);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+
+.age-box {
+  width:90%;
+  max-width:420px;
+  text-align:center;
+  background:#111;
+  padding:40px;
+  border-radius:16px;
+  border:1px solid #00ffe0;
+  box-shadow:0 0 30px rgba(0,255,224,0.35);
+}
+
+.age-box h2 {
+  font-size:36px;
+  margin-bottom:15px;
+}
+
+.age-box p {
+  margin-bottom:25px;
+  line-height:1.5;
+}
+
+.age-buttons {
+  display:flex;
+  gap:15px;
+  justify-content:center;
+}
+
+.age-buttons button {
+  padding:12px 25px;
+  border:none;
+  border-radius:8px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.age-buttons button:first-child {
+  background:#00ffe0;
+  color:#000;
+}
+
+.age-buttons button:last-child {
+  background:#ff0055;
+  color:#fff;
+}
+
 @media (max-width:900px) {
+  header {
+    flex-direction:column;
+    gap:15px;
+  }
+
+  nav {
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:15px;
+  }
+
+  nav a {
+    margin-left:0;
+  }
+
+  .hero {
+    height:70vh;
+    min-height:420px;
+    margin:0 20px 40px;
+  }
+
+  .section {
+    padding:0 20px;
+  }
+
   .deals,
   .experience,
   .visit {
@@ -170,60 +204,68 @@ footer {
 
 <body>
 
+<div id="ageGate">
+  <div class="age-box">
+    <h2>21+ Only</h2>
+    <p>You must be 21 years or older to enter this site.</p>
+    <div class="age-buttons">
+      <button onclick="enterSite()">Enter</button>
+      <button onclick="exitSite()">Leave</button>
+    </div>
+  </div>
+</div>
+
 <div class="overlay">
-<div class="container">
 
 <header>
   <h1>Elite House</h1>
   <nav>
     <a href="#">Home</a>
-    <a href="#">Brands</a>
-    <a href="#">Deals</a>
-    <a href="#">Experience</a>
-    <a href="#">Location</a>
+    <a href="#brands">Brands</a>
+    <a href="#deals">Deals</a>
+    <a href="#experience">Experience</a>
+    <a href="#visit">Location</a>
   </nav>
 </header>
 
 <section class="hero"></section>
 
-<section class="section">
+<section class="section" id="brands">
   <h2>Brands We Carry</h2>
   <div class="brands">
-    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto/v1777166394/ChatGPT_Image_Apr_25_2026_08_04_39_PM_oasjiq.png">
-    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto/v1777166383/ChatGPT_Image_Apr_25_2026_08_04_53_PM_bbgx5p.png">
-    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto/v1777166399/ChatGPT_Image_Apr_25_2026_08_04_30_PM_odwlza.png">
-    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto/v1777166357/ChatGPT_Image_Apr_25_2026_08_04_22_PM_rzy4zs.png">
-    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto/v1777166383/ChatGPT_Image_Apr_25_2026_08_15_55_PM_sirvsz.png">
+    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166394/ChatGPT_Image_Apr_25_2026_08_04_39_PM_oasjiq.png">
+    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166383/ChatGPT_Image_Apr_25_2026_08_04_53_PM_bbgx5p.png">
+    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166399/ChatGPT_Image_Apr_25_2026_08_04_30_PM_odwlza.png">
+    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166357/ChatGPT_Image_Apr_25_2026_08_04_22_PM_rzy4zs.png">
+    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166383/ChatGPT_Image_Apr_25_2026_08_15_55_PM_sirvsz.png">
   </div>
 </section>
 
-<section class="section">
+<section class="section" id="deals">
   <h2>Deals This Week</h2>
   <div class="deals">
-    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto/v1777166326/geekbar-ad_uuxqsz.png">
-    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto/v1777166330/raz-ad_n40a57.png">
-    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto/v1777166331/bundle-ad_qxcqcr.png">
+    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166326/geekbar-ad_uuxqsz.png">
+    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166330/raz-ad_n40a57.png">
+    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166331/bundle-ad_qxcqcr.png">
   </div>
 </section>
 
-<section class="section">
+<section class="section" id="experience">
   <h2>The Elite Experience</h2>
   <div class="experience">
-    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto/v1777166324/the-elite-experience_nz4xtu.png">
-    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto/v1777166375/outside_wqh4vb.png">
-    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto/v1777166379/inside-1_qwqhxc.png">
-    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto/v1777166379/inside-2_hots3k.png">
+    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166324/the-elite-experience_nz4xtu.png">
+    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166375/outside_wqh4vb.png">
+    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166379/inside-1_qwqhxc.png">
+    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166379/inside-2_hots3k.png">
   </div>
 </section>
 
-<section class="section">
+<section class="section" id="visit">
   <h2>Visit Us</h2>
   <div class="visit">
-    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto/v1777166306/visit-us_ihw6sf.png">
-
+    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166306/visit-us_ihw6sf.png">
     <iframe src="https://www.google.com/maps?q=Elite+House+Smoke+Shop+San+Juan&output=embed"></iframe>
-
-    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto/v1777166326/step-inside_u9hdex.png">
+    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166326/step-inside_u9hdex.png">
   </div>
 </section>
 
@@ -232,7 +274,21 @@ footer {
 </footer>
 
 </div>
-</div>
+
+<script>
+function enterSite() {
+  localStorage.setItem("ageVerified", "true");
+  document.getElementById("ageGate").style.display = "none";
+}
+
+function exitSite() {
+  window.location.href = "https://www.google.com";
+}
+
+if (localStorage.getItem("ageVerified") === "true") {
+  document.getElementById("ageGate").style.display = "none";
+}
+</script>
 
 </body>
 </html>
