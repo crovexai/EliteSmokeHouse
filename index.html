@@ -11,24 +11,33 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
-  font-family:Arial;
+  font-family:Arial, sans-serif;
   background:#000;
   color:#fff;
+  overflow-x:hidden;
 }
 
 /* HEADER */
 header{
   text-align:center;
-  padding:20px 0;
+  padding:15px 0;
+}
+nav{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
 }
 nav a{
-  margin:0 8px;
   color:#fff;
   text-decoration:none;
   font-size:14px;
 }
 
 /* HERO */
+.hero{
+  padding:10px;
+}
 .hero img{
   width:100%;
   border-radius:12px;
@@ -36,12 +45,12 @@ nav a{
 
 /* SECTION */
 .section{
-  margin:35px 0;
+  margin:30px 15px;
 }
 
-/* 🔥 BRANDS TITLE */
+/* TITLE */
 .section-title{
-  font-family:'Permanent Marker';
+  font-family:'Permanent Marker', cursive;
   font-size:26px;
   text-align:center;
   color:#b84cff;
@@ -53,8 +62,17 @@ nav a{
 .deals,
 .experience{
   display:flex;
+  gap:12px;
   overflow-x:auto;
   scroll-snap-type:x proximity;
+  padding-bottom:5px;
+}
+
+/* REMOVE SCROLLBAR */
+.brands::-webkit-scrollbar,
+.deals::-webkit-scrollbar,
+.experience::-webkit-scrollbar{
+  display:none;
 }
 
 /* ITEMS */
@@ -62,48 +80,50 @@ nav a{
 .deals img,
 .experience img{
   scroll-snap-align:center;
-  transition:.25s;
-}
-
-/* ACTIVE */
-.active{
-  transform:scale(1.08);
-  filter:brightness(1.2);
+  border-radius:12px;
 }
 
 /* SIZES */
 .brands img{
-  height:60px;
-  padding:0 10px;
+  height:70px;
 }
 
 .deals img{
   flex:0 0 85%;
   max-width:320px;
-  border-radius:12px;
 }
 
 .experience img{
   flex:0 0 80%;
   max-width:300px;
-  border-radius:12px;
 }
 
-/* VISIT */
+/* VISIT SECTION */
 .visit{
   display:grid;
-  grid-template-columns:1fr 1fr;
   gap:15px;
+  grid-template-columns:1fr;
 }
 
-@media(max-width:600px){
-  .visit{grid-template-columns:1fr;}
+/* DESKTOP */
+@media(min-width:768px){
+  .visit{
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+  }
 }
 
+/* MAP */
 iframe{
   width:100%;
   height:250px;
   border:none;
+  border-radius:12px;
+}
+
+/* STEP INSIDE IMAGE */
+.visit img{
+  width:100%;
   border-radius:12px;
 }
 
@@ -119,25 +139,65 @@ iframe{
 }
 
 .popup-box{
-  padding:30px;
   background:#111;
+  padding:30px;
+  border-radius:12px;
+  text-align:center;
+}
+
+.popup-box h2{
+  color:#b84cff;
+  margin-bottom:10px;
 }
 
 .popup-buttons{
   display:flex;
   gap:10px;
+  justify-content:center;
   margin-top:15px;
 }
 
 .enter-btn,
 .exit-btn{
-  padding:10px;
+  padding:10px 20px;
   border:none;
+  border-radius:8px;
   color:#fff;
+  cursor:pointer;
 }
 
-.enter-btn{background:#b84cff;}
-.exit-btn{background:#333;}
+.enter-btn{
+  background:#b84cff;
+}
+
+.exit-btn{
+  background:#333;
+}
+
+/* SMOKE FADE EFFECT */
+.smoke{
+  position:fixed;
+  inset:0;
+  background:url('https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166332/vape-store-background_jwo2nr.png') center/cover;
+  opacity:0;
+  pointer-events:none;
+  z-index:5;
+}
+.fade-in{
+  animation:smokeIn 1.5s forwards;
+}
+.fade-out{
+  animation:smokeOut 2s forwards;
+}
+
+@keyframes smokeIn{
+  from{opacity:0;}
+  to{opacity:.6;}
+}
+@keyframes smokeOut{
+  from{opacity:.6;}
+  to{opacity:0;}
+}
 
 </style>
 </head>
@@ -146,13 +206,16 @@ iframe{
 
 <div class="popup" id="popup">
   <div class="popup-box">
-    <div>21+ Only</div>
+    <h2>21+ Only</h2>
+    <p>Are you 21 years or older?</p>
     <div class="popup-buttons">
       <button class="enter-btn" onclick="enter()">Enter</button>
       <button class="exit-btn" onclick="exitSite()">No</button>
     </div>
   </div>
 </div>
+
+<div class="smoke" id="smoke"></div>
 
 <header>
   <nav>
@@ -170,7 +233,7 @@ iframe{
 
 <section class="section">
 <div class="section-title">Brands We Carry</div>
-<div class="brands" id="brands">
+<div class="brands">
 <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166394/ChatGPT_Image_Apr_25_2026_08_04_39_PM_oasjiq.png">
 <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166383/ChatGPT_Image_Apr_25_2026_08_04_53_PM_bbgx5p.png">
 <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166399/ChatGPT_Image_Apr_25_2026_08_04_30_PM_odwlza.png">
@@ -198,48 +261,30 @@ iframe{
 
 <section class="section">
 <div class="visit">
+
 <iframe src="https://www.google.com/maps?q=Elite+House+Smoke+Shop+San+Juan&output=embed"></iframe>
+
 <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166326/step-inside_u9hdex.png">
+
 </div>
 </section>
 
 <script>
 function enter(){
   document.getElementById("popup").style.display="none";
+
+  const smoke = document.getElementById("smoke");
+  smoke.classList.add("fade-in");
+
+  setTimeout(()=>{
+    smoke.classList.remove("fade-in");
+    smoke.classList.add("fade-out");
+  },1200);
 }
+
 function exitSite(){
   window.location.href="https://google.com";
 }
-
-/* 🔥 SAFE AUTO SCROLL (ONLY BRANDS, NO LOCK) */
-const brands = document.getElementById("brands");
-let scrollPos = 0;
-let paused = false;
-
-function autoScroll(){
-  if(!paused){
-    scrollPos += 0.3;
-    brands.scrollLeft = scrollPos;
-
-    if(scrollPos >= brands.scrollWidth - brands.clientWidth){
-      scrollPos = 0;
-    }
-  }
-  requestAnimationFrame(autoScroll);
-}
-
-/* pause on interaction */
-["touchstart","mousedown"].forEach(e=>{
-  brands.addEventListener(e,()=>paused=true);
-});
-
-["touchend","mouseup","mouseleave"].forEach(e=>{
-  brands.addEventListener(e,()=>{
-    setTimeout(()=>paused=false,800);
-  });
-});
-
-autoScroll();
 </script>
 
 </body>
