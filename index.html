@@ -3,124 +3,144 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Elite House Smoke Shop</title>
+
+<title>Elite House</title>
 
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
+*{margin:0;padding:0;box-sizing:border-box;}
 
-body {
-  font-family: Arial, sans-serif;
-  background:#000;
+body{
+  font-family:Arial;
   color:#fff;
+
+  /* 🔥 BACKGROUND FIX */
+  background: url('https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166332/vape-store-background_jwo2nr.png') no-repeat center;
+  background-size:cover;
+  background-attachment:fixed;
 }
 
-.container {
+/* DARK OVERLAY */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.7);
+  z-index:-1;
+}
+
+.container{
   width:92%;
   margin:auto;
 }
 
-/* NAV (MOBILE FIRST) */
-header {
+/* NAV */
+header{
   text-align:center;
   padding:20px 0;
 }
 
-nav {
-  margin-top:10px;
-}
-
-nav a {
-  margin:0 10px;
-  font-size:14px;
+nav a{
+  margin:0 8px;
   color:#fff;
   text-decoration:none;
 }
 
-/* HERO (NO CROP EVER) */
-.hero img {
+/* HERO */
+.hero img{
   width:100%;
   height:auto;
   border-radius:12px;
 }
 
-/* SECTIONS */
-.section {
-  margin:40px 0;
+/* SECTION */
+.section{
+  margin:35px 0;
 }
 
-h2 {
+h2{
   margin-bottom:15px;
-  font-size:22px;
 }
 
 /* BRANDS */
-.brands {
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:15px;
-  align-items:center;
+.brands{
+  display:flex;
+  gap:25px;
+  overflow-x:auto;
 }
 
-.brands img {
-  width:100%;
-  max-height:50px;
-  object-fit:contain;
+.brands img{
+  height:40px;
 }
 
-/* DEALS (NATIVE MOBILE SCROLL) */
-.deals {
+/* DEALS */
+.deals{
   display:flex;
   gap:15px;
   overflow-x:auto;
-  scroll-snap-type:x mandatory;
-  padding-bottom:10px;
 }
 
-.deals::-webkit-scrollbar { display:none; }
-
-.deals img {
+.deals img{
   flex:0 0 85%;
   max-width:320px;
   border-radius:12px;
-  scroll-snap-align:center;
 }
 
 /* EXPERIENCE */
-.experience {
+.experience{
   display:flex;
-  flex-direction:column;
   gap:15px;
+  overflow-x:auto;
 }
 
-.card img {
-  width:100%;
-  height:auto;
+.experience img{
+  flex:0 0 80%;
+  max-width:300px;
   border-radius:12px;
 }
 
 /* VISIT */
-.visit {
+.visit{
   display:flex;
   flex-direction:column;
   gap:15px;
 }
 
-.visit img,
-iframe {
+.visit img{
   width:100%;
   border-radius:12px;
 }
 
-/* FOOTER */
-footer {
+iframe{
+  width:100%;
+  height:250px;
+  border-radius:12px;
+  border:none;
+}
+
+/* 🔥 FOOTER SMOKE SECTION */
+.footer-banner{
+  margin-top:40px;
   text-align:center;
-  padding:30px 0;
-  font-size:14px;
+  padding:40px 20px;
+
+  background: url('https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166332/vape-store-background_jwo2nr.png') bottom no-repeat;
+  background-size:cover;
+}
+
+.footer-banner p{
+  color:#b84cff;
+  font-weight:bold;
+  margin-bottom:10px;
+}
+
+footer{
+  text-align:center;
+  padding:20px;
   opacity:0.6;
 }
 
-/* AGE POPUP */
-.popup {
+/* POPUP */
+.popup{
   position:fixed;
   inset:0;
   background:#000;
@@ -130,62 +150,31 @@ footer {
   z-index:999;
 }
 
-.popup button {
-  margin-top:20px;
+.popup button{
+  margin-top:15px;
   padding:10px 25px;
   border:none;
   background:#00e0ff;
   color:#000;
-  border-radius:6px;
 }
 
-/* ===== DESKTOP ENHANCEMENT ===== */
+/* DESKTOP */
 @media(min-width:900px){
 
-  .container {
-    max-width:1200px;
-  }
-
-  header {
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    text-align:left;
-  }
-
-  /* BRANDS */
-  .brands {
-    grid-template-columns:repeat(5,1fr);
-  }
-
-  /* DEALS GRID */
-  .deals {
+  .deals{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    overflow:hidden;
   }
 
-  .deals img {
-    max-width:100%;
-  }
-
-  /* EXPERIENCE 4 IN ROW */
-  .experience {
+  .experience{
     display:grid;
     grid-template-columns:repeat(4,1fr);
   }
 
-  .card img {
-    height:250px;
-    object-fit:cover;
-  }
-
-  /* VISIT */
-  .visit {
+  .visit{
     display:grid;
     grid-template-columns:1fr 1.5fr 1fr;
   }
-
 }
 </style>
 </head>
@@ -194,8 +183,8 @@ footer {
 
 <!-- AGE POPUP -->
 <div class="popup" id="popup">
-  <div style="text-align:center;">
-    <h2>Are you 21+?</h2>
+  <div>
+    <h2>18+ Only</h2>
     <button onclick="enter()">Enter</button>
   </div>
 </div>
@@ -215,72 +204,65 @@ footer {
 
 <!-- HERO -->
 <section class="hero">
-  <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166401/smoke-shop-hero_agqdzt.png">
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166401/smoke-shop-hero_agqdzt.png">
 </section>
 
 <!-- BRANDS -->
 <section class="section">
-  <h2>Brands We Carry</h2>
-  <div class="brands">
-    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166394/ChatGPT_Image_Apr_25_2026_08_04_39_PM_oasjiq.png">
-    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166383/ChatGPT_Image_Apr_25_2026_08_04_53_PM_bbgx5p.png">
-    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166399/ChatGPT_Image_Apr_25_2026_08_04_30_PM_odwlza.png">
-    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166357/ChatGPT_Image_Apr_25_2026_08_04_22_PM_rzy4zs.png">
-    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166383/ChatGPT_Image_Apr_25_2026_08_15_55_PM_sirvsz.png">
-  </div>
+<h2>Brands We Carry</h2>
+<div class="brands">
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166394/ChatGPT_Image_Apr_25_2026_08_04_39_PM_oasjiq.png">
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166383/ChatGPT_Image_Apr_25_2026_08_04_53_PM_bbgx5p.png">
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166399/ChatGPT_Image_Apr_25_2026_08_04_30_PM_odwlza.png">
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166357/ChatGPT_Image_Apr_25_2026_08_04_22_PM_rzy4zs.png">
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166383/ChatGPT_Image_Apr_25_2026_08_15_55_PM_sirvsz.png">
+</div>
 </section>
 
 <!-- DEALS -->
 <section class="section">
-  <h2>Deals This Week</h2>
-  <div class="deals">
-    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166326/geekbar-ad_uuxqsz.png">
-    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166330/raz-ad_n40a57.png">
-    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166331/bundle-ad_qxcqcr.png">
-  </div>
+<h2>Deals This Week</h2>
+<div class="deals">
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166326/geekbar-ad_uuxqsz.png">
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166330/raz-ad_n40a57.png">
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166331/bundle-ad_qxcqcr.png">
+</div>
 </section>
 
 <!-- EXPERIENCE -->
 <section class="section">
-  <h2>The Elite Experience</h2>
-
-  <div class="experience">
-
-    <div class="card">
-      <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166324/the-elite-experience_nz4xtu.png">
-    </div>
-
-    <div class="card">
-      <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166375/outside_wqh4vb.png">
-    </div>
-
-    <div class="card">
-      <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166379/inside-1_qwqhxc.png">
-    </div>
-
-    <div class="card">
-      <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166379/inside-2_hots3k.png">
-    </div>
-
-  </div>
+<h2>The Elite Experience</h2>
+<div class="experience">
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166324/the-elite-experience_nz4xtu.png">
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166375/outside_wqh4vb.png">
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166379/inside-1_qwqhxc.png">
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166379/inside-2_hots3k.png">
+</div>
 </section>
 
 <!-- VISIT -->
 <section class="section">
-  <h2>Visit Us</h2>
-  <div class="visit">
+<h2>Visit Us</h2>
 
-    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166306/visit-us_ihw6sf.png">
+<div class="visit">
 
-    <iframe src="https://www.google.com/maps?q=Elite+House+Smoke+Shop+San+Juan&output=embed"></iframe>
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166306/visit-us_ihw6sf.png">
 
-    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166326/step-inside_u9hdex.png">
+<iframe src="https://www.google.com/maps?q=Elite+House+Smoke+Shop+San+Juan&output=embed"></iframe>
 
-  </div>
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166326/step-inside_u9hdex.png">
+
+</div>
+
 </section>
 
+<!-- 🔥 FOOTER SMOKE FIX -->
+<div class="footer-banner">
+<p>PREMIUM PRODUCTS. REAL PEOPLE. ELITE SERVICE.</p>
+</div>
+
 <footer>
-  © 2026 Elite House Smoke Shop
+© 2026 Elite House Smoke Shop
 </footer>
 
 </div>
