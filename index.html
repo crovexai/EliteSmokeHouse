@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Elite House</title>
 
 <style>
@@ -12,21 +11,13 @@
 body{
   font-family:Arial;
   color:#fff;
+  background:#000;
 
-  /* 🔥 BACKGROUND FIX */
-  background: url('https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166332/vape-store-background_jwo2nr.png') no-repeat center;
-  background-size:cover;
-  background-attachment:fixed;
+  /* REMOVE SCROLLBAR */
+  -ms-overflow-style:none;
+  scrollbar-width:none;
 }
-
-/* DARK OVERLAY */
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.7);
-  z-index:-1;
-}
+body::-webkit-scrollbar{display:none;}
 
 .container{
   width:92%;
@@ -43,6 +34,7 @@ nav a{
   margin:0 8px;
   color:#fff;
   text-decoration:none;
+  font-size:14px;
 }
 
 /* HERO */
@@ -57,7 +49,21 @@ nav a{
   margin:35px 0;
 }
 
-h2{
+/* ===== NEON TITLE (ONLY USED ON BRANDS) ===== */
+.section-title{
+  font-size:28px;
+  font-weight:900;
+  letter-spacing:1px;
+
+  background: linear-gradient(90deg,#00e0ff,#b84cff,#ff7a00);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+  text-shadow:
+    0 0 10px rgba(0,224,255,0.6),
+    0 0 20px rgba(184,76,255,0.6),
+    0 0 30px rgba(255,122,0,0.4);
+
   margin-bottom:15px;
 }
 
@@ -70,9 +76,10 @@ h2{
 
 .brands img{
   height:40px;
+  flex:0 0 auto;
 }
 
-/* DEALS */
+/* DEALS (SCROLL SLIDER) */
 .deals{
   display:flex;
   gap:15px;
@@ -85,7 +92,7 @@ h2{
   border-radius:12px;
 }
 
-/* EXPERIENCE */
+/* EXPERIENCE (SCROLL ROW) */
 .experience{
   display:flex;
   gap:15px;
@@ -117,29 +124,14 @@ iframe{
   border:none;
 }
 
-/* 🔥 FOOTER SMOKE SECTION */
-.footer-banner{
-  margin-top:40px;
-  text-align:center;
-  padding:40px 20px;
-
-  background: url('https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166332/vape-store-background_jwo2nr.png') bottom no-repeat;
-  background-size:cover;
-}
-
-.footer-banner p{
-  color:#b84cff;
-  font-weight:bold;
-  margin-bottom:10px;
-}
-
+/* FOOTER */
 footer{
   text-align:center;
-  padding:20px;
+  padding:25px;
   opacity:0.6;
 }
 
-/* POPUP */
+/* AGE POPUP */
 .popup{
   position:fixed;
   inset:0;
@@ -156,10 +148,16 @@ footer{
   border:none;
   background:#00e0ff;
   color:#000;
+  border-radius:6px;
 }
 
 /* DESKTOP */
 @media(min-width:900px){
+
+  .brands{
+    justify-content:space-between;
+    overflow:visible;
+  }
 
   .deals{
     display:grid;
@@ -171,17 +169,22 @@ footer{
     grid-template-columns:repeat(4,1fr);
   }
 
+  .experience img{
+    max-width:100%;
+  }
+
   .visit{
     display:grid;
     grid-template-columns:1fr 1.5fr 1fr;
   }
+
 }
 </style>
 </head>
 
 <body>
 
-<!-- AGE POPUP -->
+<!-- AGE -->
 <div class="popup" id="popup">
   <div>
     <h2>18+ Only</h2>
@@ -207,9 +210,10 @@ footer{
 <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166401/smoke-shop-hero_agqdzt.png">
 </section>
 
-<!-- BRANDS -->
+<!-- BRANDS (ONLY TITLE LEFT) -->
 <section class="section">
-<h2>Brands We Carry</h2>
+<div class="section-title">Brands We Carry</div>
+
 <div class="brands">
 <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166394/ChatGPT_Image_Apr_25_2026_08_04_39_PM_oasjiq.png">
 <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166383/ChatGPT_Image_Apr_25_2026_08_04_53_PM_bbgx5p.png">
@@ -219,9 +223,8 @@ footer{
 </div>
 </section>
 
-<!-- DEALS -->
+<!-- DEALS (NO TITLE) -->
 <section class="section">
-<h2>Deals This Week</h2>
 <div class="deals">
 <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166326/geekbar-ad_uuxqsz.png">
 <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166330/raz-ad_n40a57.png">
@@ -229,9 +232,8 @@ footer{
 </div>
 </section>
 
-<!-- EXPERIENCE -->
+<!-- EXPERIENCE (NO TITLE) -->
 <section class="section">
-<h2>The Elite Experience</h2>
 <div class="experience">
 <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166324/the-elite-experience_nz4xtu.png">
 <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166375/outside_wqh4vb.png">
@@ -242,8 +244,6 @@ footer{
 
 <!-- VISIT -->
 <section class="section">
-<h2>Visit Us</h2>
-
 <div class="visit">
 
 <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166306/visit-us_ihw6sf.png">
@@ -253,13 +253,7 @@ footer{
 <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166326/step-inside_u9hdex.png">
 
 </div>
-
 </section>
-
-<!-- 🔥 FOOTER SMOKE FIX -->
-<div class="footer-banner">
-<p>PREMIUM PRODUCTS. REAL PEOPLE. ELITE SERVICE.</p>
-</div>
 
 <footer>
 © 2026 Elite House Smoke Shop
