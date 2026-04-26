@@ -67,7 +67,6 @@ nav a{
   scroll-snap-type:x proximity;
 }
 
-/* HIDE SCROLLBAR */
 .brands::-webkit-scrollbar,
 .deals::-webkit-scrollbar,
 .experience::-webkit-scrollbar{
@@ -83,26 +82,15 @@ nav a{
 }
 
 /* SIZES */
-.brands img{
-  height:70px;
-}
+.brands img{ height:70px; }
+.deals img{ flex:0 0 85%; max-width:320px; }
+.experience img{ flex:0 0 80%; max-width:300px; }
 
-.deals img{
-  flex:0 0 85%;
-  max-width:320px;
-}
-
-.experience img{
-  flex:0 0 80%;
-  max-width:300px;
-}
-
-/* VISIT SECTION */
+/* VISIT */
 .visit{
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:10px;
-  align-items:center;
 }
 
 /* MAP */
@@ -111,9 +99,13 @@ iframe{
   height:160px;
   border:none;
   border-radius:12px;
+
+  /* 🔥 DARKEN MAP */
+  filter:brightness(0.6) contrast(1.1) saturate(0.8);
+  opacity:0.9;
 }
 
-/* STEP INSIDE */
+/* IMAGE */
 .visit img{
   width:100%;
   max-height:160px;
@@ -121,21 +113,30 @@ iframe{
   border-radius:12px;
 }
 
-/* INTERACTIVE CARDS */
+/* INTERACTIVE */
 .visit-card{
   display:block;
   position:relative;
   border-radius:12px;
   overflow:hidden;
-  transition:transform .2s ease, box-shadow .2s ease;
+  transition:transform .2s ease;
 }
 
-/* PRESS EFFECT */
 .visit-card:active{
   transform:scale(.96);
 }
 
-/* NEON GLOW */
+/* 🔥 DARK OVERLAY */
+.visit-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:12px;
+  background:rgba(0,0,0,0.25);
+  pointer-events:none;
+}
+
+/* GLOW */
 .visit-card::after{
   content:"";
   position:absolute;
@@ -151,7 +152,7 @@ iframe{
   opacity:1;
 }
 
-/* Allow clicking iframe */
+/* allow click through iframe */
 .visit-card iframe{
   pointer-events:none;
 }
@@ -176,7 +177,6 @@ iframe{
 
 .popup-box h2{
   color:#b84cff;
-  margin-bottom:10px;
 }
 
 .popup-buttons{
@@ -198,7 +198,7 @@ iframe{
 .enter-btn{background:#b84cff;}
 .exit-btn{background:#333;}
 
-/* SMOKE EFFECT */
+/* SMOKE */
 .smoke{
   position:fixed;
   inset:0;
@@ -225,7 +225,7 @@ iframe{
 
 <body>
 
-<!-- 21+ POPUP -->
+<!-- POPUP -->
 <div class="popup" id="popup">
   <div class="popup-box">
     <h2>21+ Only</h2>
@@ -249,12 +249,10 @@ iframe{
   </nav>
 </header>
 
-<!-- HERO -->
 <section class="hero">
 <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166401/smoke-shop-hero_agqdzt.png">
 </section>
 
-<!-- BRANDS -->
 <section class="section">
 <div class="section-title">Brands We Carry</div>
 <div class="brands">
@@ -266,7 +264,6 @@ iframe{
 </div>
 </section>
 
-<!-- DEALS -->
 <section class="section">
 <div class="deals">
 <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166326/geekbar-ad_uuxqsz.png">
@@ -275,7 +272,6 @@ iframe{
 </div>
 </section>
 
-<!-- EXPERIENCE -->
 <section class="section">
 <div class="experience">
 <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166324/the-elite-experience_nz4xtu.png">
@@ -285,7 +281,7 @@ iframe{
 </div>
 </section>
 
-<!-- VISIT (INTERACTIVE) -->
+<!-- VISIT -->
 <section class="section">
 <div class="visit">
 
