@@ -17,21 +17,53 @@ body{
   overflow-x:hidden;
 }
 
-/* HEADER */
+/* 🔥 UPDATED HEADER (SAFE) */
 header{
-  text-align:center;
-  padding:15px 0;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(0,255,212,0.15);
+  padding:12px 0;
 }
+
 nav{
   display:flex;
   justify-content:center;
-  gap:12px;
+  gap:16px;
   flex-wrap:wrap;
 }
+
+/* 🔥 TEAL NAV */
 nav a{
-  color:#fff;
+  color:#00f5d4;
   text-decoration:none;
   font-size:14px;
+  position:relative;
+  transition:0.25s ease;
+}
+
+/* glow */
+nav a:hover{
+  color:#00ffe5;
+  text-shadow:0 0 10px rgba(0,255,229,0.6);
+}
+
+/* underline animation */
+nav a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-4px;
+  width:0;
+  height:2px;
+  background:#00f5d4;
+  transition:0.3s ease;
+}
+
+nav a:hover::after{
+  width:100%;
 }
 
 /* HERO */
@@ -99,8 +131,6 @@ iframe{
   height:160px;
   border:none;
   border-radius:12px;
-
-  /* ð¥ DARKEN MAP */
   filter:brightness(0.6) contrast(1.1) saturate(0.8);
   opacity:0.9;
 }
@@ -126,7 +156,6 @@ iframe{
   transform:scale(.96);
 }
 
-/* ð¥ DARK OVERLAY */
 .visit-card::before{
   content:"";
   position:absolute;
@@ -136,7 +165,6 @@ iframe{
   pointer-events:none;
 }
 
-/* GLOW */
 .visit-card::after{
   content:"";
   position:absolute;
@@ -152,7 +180,6 @@ iframe{
   opacity:1;
 }
 
-/* allow click through iframe */
 .visit-card iframe{
   pointer-events:none;
 }
@@ -257,62 +284,4 @@ iframe{
 <div class="section-title">Brands We Carry</div>
 <div class="brands">
 <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166394/ChatGPT_Image_Apr_25_2026_08_04_39_PM_oasjiq.png">
-<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166383/ChatGPT_Image_Apr_25_2026_08_04_53_PM_bbgx5p.png">
-<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166399/ChatGPT_Image_Apr_25_2026_08_04_30_PM_odwlza.png">
-<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166357/ChatGPT_Image_Apr_25_2026_08_04_22_PM_rzy4zs.png">
-<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166383/ChatGPT_Image_Apr_25_2026_08_15_55_PM_sirvsz.png">
-</div>
-</section>
-
-<section class="section">
-<div class="deals">
-<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166326/geekbar-ad_uuxqsz.png">
-<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166330/raz-ad_n40a57.png">
-<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166331/bundle-ad_qxcqcr.png">
-</div>
-</section>
-
-<section class="section">
-<div class="experience">
-<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166324/the-elite-experience_nz4xtu.png">
-<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166375/outside_wqh4vb.png">
-<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166379/inside-1_qwqhxc.png">
-<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166379/inside-2_hots3k.png">
-</div>
-</section>
-
-<!-- VISIT -->
-<section class="section">
-<div class="visit">
-
-<a href="https://www.google.com/maps?q=Elite+House+Smoke+Shop+San+Juan" class="visit-card">
-  <iframe src="https://www.google.com/maps?q=Elite+House+Smoke+Shop+San+Juan&output=embed"></iframe>
-</a>
-
-<a href="https://www.google.com/maps/dir/?api=1&destination=Elite+House+Smoke+Shop+San+Juan" class="visit-card">
-  <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166326/step-inside_u9hdex.png">
-</a>
-
-</div>
-</section>
-
-<script>
-function enter(){
-  document.getElementById("popup").style.display="none";
-
-  const smoke = document.getElementById("smoke");
-  smoke.classList.add("fade-in");
-
-  setTimeout(()=>{
-    smoke.classList.remove("fade-in");
-    smoke.classList.add("fade-out");
-  },1200);
-}
-
-function exitSite(){
-  window.location.href="https://google.com";
-}
-</script>
-
-</body>
-</html>
+<img src="https
