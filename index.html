@@ -22,14 +22,16 @@ header{
   text-align:center;
   padding:15px 0;
 }
+
 nav{
   display:flex;
   justify-content:center;
-  gap:12px;
+  gap:14px;
   flex-wrap:wrap;
 }
+
 nav a{
-  color:#fff;
+  color:#00f5d4; /* TEAL */
   text-decoration:none;
   font-size:14px;
 }
@@ -64,7 +66,6 @@ nav a{
   display:flex;
   gap:12px;
   overflow-x:auto;
-  scroll-snap-type:x proximity;
 }
 
 .brands::-webkit-scrollbar,
@@ -77,12 +78,11 @@ nav a{
 .brands img,
 .deals img,
 .experience img{
-  scroll-snap-align:center;
   border-radius:12px;
 }
 
 /* SIZES */
-.brands img{ height:70px; }
+.brands img{ height:80px; }
 .deals img{ flex:0 0 85%; max-width:320px; }
 .experience img{ flex:0 0 80%; max-width:300px; }
 
@@ -93,47 +93,41 @@ nav a{
   gap:10px;
 }
 
-/* MAP */
+/* MAP FIX */
 iframe{
   width:100%;
   height:160px;
   border:none;
   border-radius:12px;
-
-  /* ð¥ DARKEN MAP */
-  filter:brightness(0.6) contrast(1.1) saturate(0.8);
-  opacity:0.9;
+  filter:brightness(0.45) contrast(1.2) saturate(0.7);
 }
 
 /* IMAGE */
 .visit img{
   width:100%;
-  max-height:160px;
-  object-fit:contain;
+  height:160px;
+  object-fit:cover;
   border-radius:12px;
 }
 
 /* INTERACTIVE */
 .visit-card{
-  display:block;
   position:relative;
   border-radius:12px;
   overflow:hidden;
-  transition:transform .2s ease;
+  transition:transform .15s ease;
 }
 
 .visit-card:active{
-  transform:scale(.96);
+  transform:scale(.95);
 }
 
-/* ð¥ DARK OVERLAY */
+/* DARK OVERLAY */
 .visit-card::before{
   content:"";
   position:absolute;
   inset:0;
-  border-radius:12px;
-  background:rgba(0,0,0,0.25);
-  pointer-events:none;
+  background:rgba(0,0,0,0.35);
 }
 
 /* GLOW */
@@ -141,18 +135,15 @@ iframe{
   content:"";
   position:absolute;
   inset:0;
-  border-radius:12px;
-  box-shadow:0 0 20px rgba(0,255,255,0.25);
+  box-shadow:0 0 25px rgba(0,255,255,0.2);
   opacity:0;
   transition:.3s;
 }
 
-.visit-card:hover::after,
 .visit-card:active::after{
   opacity:1;
 }
 
-/* allow click through iframe */
 .visit-card iframe{
   pointer-events:none;
 }
@@ -161,29 +152,43 @@ iframe{
 .popup{
   position:fixed;
   inset:0;
-  background:#000;
   display:flex;
   justify-content:center;
   align-items:center;
   z-index:999;
 }
 
+/* 🔥 NEON SMOKE BACKGROUND */
+.popup::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 40%, rgba(180,0,255,0.6), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(0,255,200,0.5), transparent 40%),
+    radial-gradient(circle at 50% 80%, rgba(255,120,0,0.5), transparent 40%);
+  filter:blur(90px);
+}
+
+/* POPUP BOX */
 .popup-box{
-  background:#111;
+  position:relative;
+  background:rgba(0,0,0,0.75);
   padding:30px;
   border-radius:12px;
   text-align:center;
+  backdrop-filter:blur(6px);
 }
 
 .popup-box h2{
-  color:#b84cff;
+  font-family:'Permanent Marker';
+  color:#00f5d4;
 }
 
 .popup-buttons{
   display:flex;
   gap:10px;
-  justify-content:center;
-  margin-top:15px;
+  margin-top:20px;
 }
 
 .enter-btn,
@@ -191,32 +196,51 @@ iframe{
   padding:10px 20px;
   border:none;
   border-radius:8px;
-  color:#fff;
   cursor:pointer;
 }
 
-.enter-btn{background:#b84cff;}
-.exit-btn{background:#333;}
+.enter-btn{
+  background:#00f5d4;
+  color:#000;
+}
 
-/* SMOKE */
+.exit-btn{
+  background:#333;
+  color:#fff;
+}
+
+/* 🔥 REAL SMOKE (SITE) */
 .smoke{
   position:fixed;
   inset:0;
-  background:url('https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166332/vape-store-background_jwo2nr.png') center/cover;
-  opacity:0;
   pointer-events:none;
   z-index:5;
+
+  background:
+    radial-gradient(circle at 20% 40%, rgba(180,0,255,0.5), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(0,255,200,0.4), transparent 40%),
+    radial-gradient(circle at 50% 80%, rgba(255,120,0,0.4), transparent 40%);
+
+  filter:blur(80px);
+  opacity:0;
 }
 
-.fade-in{animation:smokeIn 1.5s forwards;}
-.fade-out{animation:smokeOut 2s forwards;}
+/* ANIMATION */
+.fade-in{
+  animation:smokeIn 1.2s ease forwards;
+}
+
+.fade-out{
+  animation:smokeOut 2s ease forwards;
+}
 
 @keyframes smokeIn{
-  from{opacity:0;}
-  to{opacity:.6;}
+  from{opacity:0; transform:scale(0.9);}
+  to{opacity:.85; transform:scale(1);}
 }
+
 @keyframes smokeOut{
-  from{opacity:.6;}
+  from{opacity:.85;}
   to{opacity:0;}
 }
 
@@ -228,8 +252,10 @@ iframe{
 <!-- POPUP -->
 <div class="popup" id="popup">
   <div class="popup-box">
-    <h2>21+ Only</h2>
-    <p>Are you 21 years or older?</p>
+    <h2>Elite House</h2>
+    <p>Premium Vape Experience</p>
+    <p>21+ Only</p>
+
     <div class="popup-buttons">
       <button class="enter-btn" onclick="enter()">Enter</button>
       <button class="exit-btn" onclick="exitSite()">No</button>
@@ -265,26 +291,7 @@ iframe{
 </section>
 
 <section class="section">
-<div class="deals">
-<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166326/geekbar-ad_uuxqsz.png">
-<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166330/raz-ad_n40a57.png">
-<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166331/bundle-ad_qxcqcr.png">
-</div>
-</section>
-
-<section class="section">
-<div class="experience">
-<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166324/the-elite-experience_nz4xtu.png">
-<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166375/outside_wqh4vb.png">
-<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166379/inside-1_qwqhxc.png">
-<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166379/inside-2_hots3k.png">
-</div>
-</section>
-
-<!-- VISIT -->
-<section class="section">
 <div class="visit">
-
 <a href="https://www.google.com/maps?q=Elite+House+Smoke+Shop+San+Juan" class="visit-card">
   <iframe src="https://www.google.com/maps?q=Elite+House+Smoke+Shop+San+Juan&output=embed"></iframe>
 </a>
@@ -292,7 +299,6 @@ iframe{
 <a href="https://www.google.com/maps/dir/?api=1&destination=Elite+House+Smoke+Shop+San+Juan" class="visit-card">
   <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166326/step-inside_u9hdex.png">
 </a>
-
 </div>
 </section>
 
