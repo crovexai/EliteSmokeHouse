@@ -187,57 +187,34 @@ body.age-complete .site-content{
   top:0;
   z-index:550;
   background:#000;
-  border-bottom:1px solid rgba(0,245,212,0.26);
-}
-
-.nav-container{
-  width:100%;
-  max-width:1560px;
+  border-bottom:1px solid rgba(0,245,212,0.28);
   min-height:82px;
-  margin:0 auto;
-  padding:0 64px;
-  display:grid;
-  grid-template-columns:220px 1fr 220px;
-  align-items:center;
-}
-
-/* LEFT LOGO */
-
-.nav-logo{
-  display:flex;
-  align-items:center;
-  justify-content:flex-start;
-  width:220px;
-  height:82px;
-  text-decoration:none;
-  overflow:hidden;
-}
-
-.nav-logo img{
-  display:block;
-  width:auto;
-  height:62px;
-  object-fit:contain;
-}
-
-/* CENTER NAV LINKS */
-
-.nav-links{
-  width:100%;
   display:flex;
   align-items:center;
   justify-content:center;
+}
+
+/* FULL WIDTH DESKTOP NAV */
+
+.nav-links{
+  width:100%;
+  max-width:1280px;
+  margin:0 auto;
+  padding:0 72px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
   gap:44px;
 }
 
 .nav-links a{
   color:#00f5d4;
   text-decoration:none;
-  font-size:16px;
+  font-size:20px;
   font-weight:900;
-  letter-spacing:0.35px;
+  letter-spacing:0.45px;
   line-height:1;
-  padding:16px 0;
+  padding:28px 0;
   white-space:nowrap;
   transition:.25s ease;
 }
@@ -245,11 +222,6 @@ body.age-complete .site-content{
 .nav-links a:hover{
   color:#fff;
   text-shadow:0 0 12px rgba(0,245,212,0.95);
-}
-
-.nav-spacer{
-  width:220px;
-  height:1px;
 }
 
 /* HERO */
@@ -368,34 +340,19 @@ body.age-complete .site-content{
     padding:8px 12px;
   }
 
-  .nav-container{
-    max-width:100%;
-    min-height:74px;
-    padding:0 24px;
-    grid-template-columns:170px 1fr;
-  }
-
-  .nav-logo{
-    width:170px;
-    height:74px;
-  }
-
-  .nav-logo img{
-    height:54px;
-  }
-
-  .nav-spacer{
-    display:none;
+  .site-header{
+    min-height:72px;
   }
 
   .nav-links{
-    justify-content:flex-end;
-    gap:20px;
+    max-width:100%;
+    padding:0 24px;
+    gap:24px;
   }
 
   .nav-links a{
-    font-size:14px;
-    padding:14px 0;
+    font-size:16px;
+    padding:24px 0;
   }
 
   .hero{
@@ -437,34 +394,20 @@ body.age-complete .site-content{
     padding:8px 10px;
   }
 
-  .nav-container{
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
+  .site-header{
     min-height:auto;
-    padding:10px 12px;
-    gap:8px;
-  }
-
-  .nav-logo{
-    width:auto;
-    height:54px;
-    justify-content:center;
-  }
-
-  .nav-logo img{
-    height:50px;
+    padding:10px 0;
   }
 
   .nav-links{
     width:100%;
+    max-width:100%;
     justify-content:flex-start;
     overflow-x:auto;
-    gap:18px;
+    gap:22px;
+    padding:4px 14px 6px;
     scrollbar-width:none;
     -ms-overflow-style:none;
-    padding:4px 2px 6px;
   }
 
   .nav-links::-webkit-scrollbar{
@@ -472,7 +415,7 @@ body.age-complete .site-content{
   }
 
   .nav-links a{
-    font-size:13px;
+    font-size:14px;
     padding:8px 0;
   }
 
