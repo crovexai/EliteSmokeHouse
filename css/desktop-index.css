@@ -62,13 +62,12 @@ body.age-complete .site-content{
   opacity:1;
 }
 
+/* CLEAN VIDEO OVERLAY - NO PURPLE GLOW CIRCLE */
 .age-overlay::after{
   content:"";
   position:absolute;
   inset:0;
-  background:
-    radial-gradient(circle at center, rgba(184,76,255,0.16), transparent 45%),
-    rgba(0,0,0,0.28);
+  background:rgba(0,0,0,0.18);
   z-index:2;
   pointer-events:none;
 }
@@ -79,15 +78,13 @@ body.age-complete .site-content{
   width:100%;
   max-width:430px;
   margin:20px;
-  background:rgba(0,0,0,0.62);
-  backdrop-filter:blur(8px);
+  background:rgba(0,0,0,0.58);
+  backdrop-filter:blur(6px);
   padding:40px 30px;
   border-radius:22px;
   text-align:center;
-  border:1px solid rgba(184,76,255,0.65);
-  box-shadow:
-    0 0 26px rgba(184,76,255,0.45),
-    0 0 60px rgba(0,245,212,0.12);
+  border:1px solid rgba(255,255,255,0.22);
+  box-shadow:none;
   transition:
     opacity .45s ease,
     transform .45s ease,
@@ -100,7 +97,7 @@ body.age-complete .site-content{
   font-size:42px;
   line-height:1;
   margin-bottom:12px;
-  text-shadow:0 0 14px rgba(184,76,255,0.55);
+  text-shadow:none;
 }
 
 .age-popup-box p{
@@ -130,7 +127,7 @@ body.age-complete .site-content{
 
 .enter-btn{
   background:#b84cff;
-  box-shadow:0 0 16px rgba(184,76,255,0.42);
+  box-shadow:none;
 }
 
 .exit-btn{
@@ -150,10 +147,9 @@ body.age-complete .site-content{
   pointer-events:none;
 }
 
+/* AFTER CLICK - KEEP VIDEO CLEAN */
 .transition-mode::after{
-  background:
-    radial-gradient(circle at center, rgba(0,245,212,0.12), transparent 50%),
-    rgba(0,0,0,0.18);
+  background:rgba(0,0,0,0.08);
 }
 
 .overlay-hide{
