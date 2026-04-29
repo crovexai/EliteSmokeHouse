@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,14 +31,20 @@
 <div class="smoke" id="smoke"></div>
 
 <header>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="brands.html">Brands</a>
-    <a href="deals.html">Deals</a>
-    <a href="experience.html">Experience</a>
-    <a href="location.html">Location</a>
-    <a href="../mobile/index.html">Mobile</a>
-  </nav>
+  <div class="nav-container">
+
+    <div class="logo">Elite House</div>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="brands.html">Brands</a>
+      <a href="deals.html">Deals</a>
+      <a href="experience.html">Experience</a>
+      <a href="location.html">Location</a>
+      <a href="policies.html">Policies</a>
+    </nav>
+
+  </div>
 </header>
 
 <section class="hero">
@@ -87,7 +94,7 @@ function enterSite(){
   setTimeout(() => {
     smoke.classList.remove("fade-in");
     smoke.classList.add("fade-out");
-  }, 1200);
+  }, 1500);
 }
 
 function exitSite(){
@@ -97,3 +104,4 @@ function exitSite(){
 
 </body>
 </html>
+```
