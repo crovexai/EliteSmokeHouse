@@ -3,7 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Elite House</title>
+
+<script>
+(function(){
+  const isMobile = window.innerWidth <= 768;
+  window.location.replace(isMobile ? "mobile/index.html" : "desktop/index.html");
+})();
+</script>
 
 <style>
 *{
@@ -12,9 +20,15 @@
   box-sizing:border-box;
 }
 
+html,
+body{
+  width:100%;
+  min-height:100%;
+  background:#000;
+}
+
 body{
   min-height:100vh;
-  background:#000;
   color:#fff;
   font-family:Arial, sans-serif;
   display:flex;
@@ -25,10 +39,12 @@ body{
 }
 
 .loader{
+  width:100%;
   max-width:420px;
 }
 
 h1{
+  font-family:Arial, sans-serif;
   color:#00f5d4;
   margin-bottom:12px;
 }
@@ -67,14 +83,6 @@ a{
     <a href="mobile/index.html">Mobile Site</a>
   </div>
 </div>
-
-<script>
-if (window.innerWidth <= 768) {
-  window.location.replace("mobile/index.html");
-} else {
-  window.location.replace("desktop/index.html");
-}
-</script>
 
 </body>
 </html>
