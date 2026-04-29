@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elite House | Mobile Home</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/mobile-index.css">
+</head>
+
+<body>
+
+<div class="warning-banner">
+  ADVERTENCIA: Este producto contiene nicotina. La nicotina es adictiva.
+</div>
+
+<div class="popup" id="popup">
+  <div class="popup-box">
+    <h2>21+ Only</h2>
+    <p>Are you 21 years or older?</p>
+
+    <div class="popup-buttons">
+      <button class="enter-btn" onclick="enterSite()">Enter</button>
+      <button class="exit-btn" onclick="exitSite()">No</button>
+    </div>
+  </div>
+</div>
+
+<div class="smoke" id="smoke"></div>
+
+<header>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="brands.html">Brands</a>
+    <a href="deals.html">Deals</a>
+    <a href="experience.html">Experience</a>
+    <a href="location.html">Location</a>
+    <a href="../desktop/index.html">Desktop</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166401/smoke-shop-hero_agqdzt.png" alt="Elite House Smoke Shop hero">
+</section>
+
+<section class="mobile-section">
+  <h2>Brands We Carry</h2>
+
+  <div class="swipe-row">
+    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166394/ChatGPT_Image_Apr_25_2026_08_04_39_PM_oasjiq.png" alt="Geek Bar">
+    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166383/ChatGPT_Image_Apr_25_2026_08_04_53_PM_bbgx5p.png" alt="Raz">
+    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166399/ChatGPT_Image_Apr_25_2026_08_04_30_PM_odwlza.png" alt="Elf Bar">
+    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166357/ChatGPT_Image_Apr_25_2026_08_04_22_PM_rzy4zs.png" alt="Flum">
+  </div>
+
+  <a class="mobile-button" href="brands.html">See Brands</a>
+</section>
+
+<section class="mobile-section">
+  <h2>Deals</h2>
+
+  <div class="swipe-row deals-row">
+    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166326/geekbar-ad_uuxqsz.png" alt="Geek Bar deals">
+    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166330/raz-ad_n40a57.png" alt="Raz specials">
+    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166331/bundle-ad_qxcqcr.png" alt="Bundle offers">
+  </div>
+
+  <a class="mobile-button" href="deals.html">See Deals</a>
+</section>
+
+<script>
+function enterSite(){
+  document.getElementById("popup").style.display = "none";
+
+  const smoke = document.getElementById("smoke");
+  smoke.classList.remove("fade-out");
+  smoke.classList.add("fade-in");
+
+  setTimeout(() => {
+    smoke.classList.remove("fade-in");
+    smoke.classList.add("fade-out");
+  }, 1200);
+}
+
+function exitSite(){
+  window.location.href = "https://google.com";
+}
+</script>
+
+</body>
+</html>
