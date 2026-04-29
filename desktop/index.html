@@ -1,107 +1,197 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Elite House | Home</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/desktop-index.css">
 </head>
 
-<body>
+<body class="age-lock">
 
-<div class="warning-banner">
-  ADVERTENCIA: Este producto contiene nicotina. La nicotina es adictiva.
-</div>
+<!-- AGE VIDEO OVERLAY -->
+<div class="age-overlay" id="ageOverlay">
 
-<div class="popup" id="popup">
-  <div class="popup-box">
+  <video
+    id="smokeClip1"
+    class="age-video active-video"
+    autoplay
+    muted
+    playsinline
+    preload="auto"
+  >
+    <source src="https://res.cloudinary.com/dovrzmlqj/video/upload/q_auto/v1777478247/smoke-clip1_ect2wb.mp4">
+  </video>
+
+  <video
+    id="smokeClip2"
+    class="age-video"
+    muted
+    playsinline
+    preload="auto"
+  >
+    <source src="https://res.cloudinary.com/dovrzmlqj/video/upload/q_auto/v1777241822/smoke-clip2_yjhhjb">
+  </video>
+
+  <div class="age-popup-box" id="agePopupBox">
     <h2>21+ Only</h2>
     <p>Are you 21 years or older?</p>
 
     <div class="popup-buttons">
-      <button class="enter-btn" onclick="enterSite()">Enter</button>
-      <button class="exit-btn" onclick="exitSite()">No</button>
+      <button class="enter-btn" onclick="chooseAge('yes')">Yes</button>
+      <button class="exit-btn" onclick="chooseAge('no')">No</button>
     </div>
   </div>
+
 </div>
 
-<div class="smoke" id="smoke"></div>
+<!-- SITE CONTENT -->
+<div class="site-content" id="siteContent">
 
-<header>
-  <div class="nav-container">
-
-    <div class="logo">Elite House</div>
-
-    <nav class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="brands.html">Brands</a>
-      <a href="deals.html">Deals</a>
-      <a href="experience.html">Experience</a>
-      <a href="location.html">Location</a>
-      <a href="policies.html">Policies</a>
-    </nav>
-
+  <div class="warning-banner">
+    ADVERTENCIA: Este producto contiene nicotina. La nicotina es adictiva.
   </div>
-</header>
 
-<section class="hero">
-  <div class="hero-content">
-    <h1>Elite House</h1>
-    <p>Premium vape and smoke shop experience in San Juan.</p>
-    <div class="hero-actions">
-      <a href="deals.html">View Deals</a>
-      <a href="location.html">Visit Us</a>
+  <header class="site-header">
+    <div class="nav-container">
+
+      <a class="logo" href="index.html">Elite House</a>
+
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="brands.html">Brands</a>
+        <a href="deals.html">Deals</a>
+        <a href="experience.html">Experience</a>
+        <a href="location.html">Location</a>
+        <a href="policies.html">Policies</a>
+      </nav>
+
     </div>
-  </div>
-</section>
+  </header>
 
-<section class="home-section">
-  <h2>Brands We Carry</h2>
+  <main>
 
-  <div class="brand-preview">
-    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166394/ChatGPT_Image_Apr_25_2026_08_04_39_PM_oasjiq.png" alt="Geek Bar">
-    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166383/ChatGPT_Image_Apr_25_2026_08_04_53_PM_bbgx5p.png" alt="Raz">
-    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166399/ChatGPT_Image_Apr_25_2026_08_04_30_PM_odwlza.png" alt="Elf Bar">
-    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166357/ChatGPT_Image_Apr_25_2026_08_04_22_PM_rzy4zs.png" alt="Flum">
-  </div>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Elite House</h1>
+        <p>Premium vape and smoke shop experience in San Juan.</p>
 
-  <a class="section-button" href="brands.html">See All Brands</a>
-</section>
+        <div class="hero-actions">
+          <a href="deals.html">View Deals</a>
+          <a href="location.html">Visit Us</a>
+        </div>
+      </div>
+    </section>
 
-<section class="home-section">
-  <h2>Featured Deals</h2>
+    <section class="home-section">
+      <h2>Brands We Carry</h2>
 
-  <div class="deal-preview">
-    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166326/geekbar-ad_uuxqsz.png" alt="Geek Bar deals">
-    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166330/raz-ad_n40a57.png" alt="Raz specials">
-    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166331/bundle-ad_qxcqcr.png" alt="Bundle offers">
-  </div>
+      <div class="brand-preview">
+        <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto/v1777166394/ChatGPT_Image_Apr_25_2026_08_04_39_PM_oasjiq.png" alt="Geek Bar">
+        <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto/v1777166383/ChatGPT_Image_Apr_25_2026_08_04_53_PM_bbgx5p.png" alt="Raz">
+        <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto/v1777166399/ChatGPT_Image_Apr_25_2026_08_04_30_PM_odwlza.png" alt="Elf Bar">
+        <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto/v1777166357/ChatGPT_Image_Apr_25_2026_08_04_22_PM_rzy4zs.png" alt="Flum">
+      </div>
 
-  <a class="section-button" href="deals.html">See All Deals</a>
-</section>
+      <a class="section-button" href="brands.html">See All Brands</a>
+    </section>
+
+    <section class="home-section">
+      <h2>Featured Deals</h2>
+
+      <div class="deal-preview">
+        <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto/v1777166326/geekbar-ad_uuxqsz.png" alt="Geek Bar deals">
+        <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto/v1777166330/raz-ad_n40a57.png" alt="Raz specials">
+        <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto/v1777166331/bundle-ad_qxcqcr.png" alt="Bundle offers">
+      </div>
+
+      <a class="section-button" href="deals.html">See All Deals</a>
+    </section>
+
+  </main>
+
+</div>
 
 <script>
-function enterSite(){
-  document.getElementById("popup").style.display = "none";
+const ageOverlay = document.getElementById("ageOverlay");
+const agePopupBox = document.getElementById("agePopupBox");
+const smokeClip1 = document.getElementById("smokeClip1");
+const smokeClip2 = document.getElementById("smokeClip2");
 
-  const smoke = document.getElementById("smoke");
-  smoke.classList.remove("fade-out");
-  smoke.classList.add("fade-in");
+let userChoice = null;
+let clip1Finished = false;
+let clip2Started = false;
 
-  setTimeout(() => {
-    smoke.classList.remove("fade-in");
-    smoke.classList.add("fade-out");
-  }, 1500);
+window.addEventListener("load", () => {
+  smokeClip1.play().catch(() => {
+    // If autoplay gets blocked, it will still play after user taps Yes or No.
+  });
+});
+
+smokeClip1.addEventListener("ended", () => {
+  clip1Finished = true;
+
+  if(userChoice){
+    playClip2();
+  }
+});
+
+smokeClip2.addEventListener("ended", () => {
+  finishAgeGate();
+});
+
+function chooseAge(choice){
+  if(userChoice) return;
+
+  userChoice = choice;
+
+  agePopupBox.classList.add("popup-hide");
+  ageOverlay.classList.add("transition-mode");
+
+  smokeClip1.play().catch(() => {
+    clip1Finished = true;
+    playClip2();
+  });
+
+  if(smokeClip1.ended || clip1Finished){
+    playClip2();
+  }
 }
 
-function exitSite(){
-  window.location.href = "https://google.com";
+function playClip2(){
+  if(clip2Started) return;
+
+  clip2Started = true;
+
+  smokeClip1.classList.remove("active-video");
+  smokeClip2.classList.add("active-video");
+
+  smokeClip2.currentTime = 0;
+
+  smokeClip2.play().catch(() => {
+    finishAgeGate();
+  });
+}
+
+function finishAgeGate(){
+  if(userChoice === "no"){
+    window.location.href = "https://google.com";
+    return;
+  }
+
+  document.body.classList.remove("age-lock");
+  document.body.classList.add("age-complete");
+
+  ageOverlay.classList.add("overlay-hide");
+
+  setTimeout(() => {
+    ageOverlay.style.display = "none";
+  }, 900);
 }
 </script>
 
 </body>
 </html>
-```
