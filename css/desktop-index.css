@@ -206,6 +206,11 @@ body.age-complete .site-content{
     0 0 24px rgba(0,245,212,.22);
 }
 
+.coming-soon-button{
+  cursor:not-allowed;
+  opacity:.85;
+}
+
 .button-row{
   width:100%;
   display:flex;
@@ -239,55 +244,26 @@ body.age-complete .site-content{
   z-index:1;
 }
 
-/* HEADER */
+/* HEADER / NAV */
 
 .site-header{
   position:relative;
   z-index:5;
   width:100%;
-  max-width:1360px;
+  max-width:1400px;
   margin:0 auto;
-  padding:26px 56px 0;
-  display:grid;
-  grid-template-columns:185px 1fr 70px;
-  align-items:start;
-  gap:28px;
-}
-
-/* FIXED LOGO */
-
-.header-logo{
-  width:165px;
-  min-width:165px;
-  height:120px;
+  padding:36px 60px 0;
   display:flex;
+  justify-content:center;
   align-items:flex-start;
-  justify-content:flex-start;
-  text-decoration:none;
-  overflow:visible;
-  position:relative;
-  z-index:8;
-}
-
-.header-logo img{
-  display:block;
-  width:165px;
-  height:120px;
-  object-fit:contain;
-  object-position:left top;
-  transform:scale(1.28);
-  transform-origin:left top;
-  filter:
-    drop-shadow(0 0 10px rgba(0,245,212,.28))
-    drop-shadow(0 0 12px rgba(184,76,255,.22));
 }
 
 .nav-links{
+  width:100%;
   display:flex;
   align-items:flex-start;
-  justify-content:center;
-  gap:30px;
-  padding-top:31px;
+  justify-content:space-between;
+  gap:34px;
 }
 
 .nav-links a{
@@ -295,12 +271,26 @@ body.age-complete .site-content{
   color:#fff;
   text-decoration:none;
   text-transform:uppercase;
-  font-size:14px;
+  font-size:42px;
   font-weight:900;
-  letter-spacing:.8px;
+  letter-spacing:1px;
   line-height:1;
   white-space:nowrap;
   transition:.25s ease;
+}
+
+.nav-links a span{
+  display:block;
+  width:max-content;
+  margin:7px auto 0;
+  color:#fff;
+  background:rgba(255,255,255,.18);
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.5px;
+  padding:4px 7px;
+  border-radius:2px;
+  text-align:center;
 }
 
 .nav-links a.active::after{
@@ -309,43 +299,21 @@ body.age-complete .site-content{
   left:0;
   right:0;
   bottom:-18px;
-  height:3px;
+  height:5px;
   background:#ff9d00;
-}
-
-.nav-links a span{
-  display:block;
-  margin-top:7px;
-  font-size:8px;
-  color:#fff;
-  background:rgba(255,255,255,.18);
-  padding:3px 5px;
-  border-radius:2px;
-  letter-spacing:.3px;
-  text-align:center;
 }
 
 .nav-links a:hover{
   color:#00f5d4;
 }
 
-.social-icons{
-  display:flex;
-  gap:12px;
-  padding-top:26px;
+.nav-links .disabled-link{
+  cursor:not-allowed;
+  opacity:.92;
 }
 
-.social-icons a{
-  width:24px;
-  height:24px;
-  display:grid;
-  place-items:center;
+.nav-links .disabled-link:hover{
   color:#fff;
-  border:1px solid rgba(255,255,255,.4);
-  border-radius:50%;
-  text-decoration:none;
-  font-weight:900;
-  font-size:14px;
 }
 
 /* HERO TEXT */
@@ -737,6 +705,7 @@ body.age-complete .site-content{
   display:flex;
   justify-content:center;
   gap:34px;
+  flex-wrap:wrap;
 }
 
 .site-footer nav a{
@@ -769,29 +738,19 @@ body.age-complete .site-content{
 @media(max-width:1100px){
 
   .site-header{
-    padding:24px 28px 0;
-    grid-template-columns:145px 1fr 60px;
-    gap:18px;
-  }
-
-  .header-logo{
-    width:125px;
-    min-width:125px;
-    height:92px;
-  }
-
-  .header-logo img{
-    width:125px;
-    height:92px;
-    transform:scale(1.2);
+    padding:26px 28px 0;
   }
 
   .nav-links{
-    gap:18px;
+    gap:26px;
   }
 
   .nav-links a{
-    font-size:12px;
+    font-size:28px;
+  }
+
+  .nav-links a span{
+    font-size:8px;
   }
 
   .hero-copy{
@@ -851,29 +810,14 @@ body.age-complete .site-content{
   }
 
   .site-header{
-    padding:14px 14px 0;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-  }
-
-  .header-logo{
-    width:105px;
-    min-width:105px;
-    height:78px;
-  }
-
-  .header-logo img{
-    width:105px;
-    height:78px;
-    transform:scale(1.15);
+    padding:16px 14px 0;
   }
 
   .nav-links{
     width:100%;
     justify-content:flex-start;
     overflow-x:auto;
-    gap:18px;
+    gap:24px;
     padding:14px 4px 8px;
     scrollbar-width:none;
   }
@@ -882,8 +826,13 @@ body.age-complete .site-content{
     display:none;
   }
 
-  .social-icons{
-    display:none;
+  .nav-links a{
+    font-size:18px;
+  }
+
+  .nav-links a span{
+    font-size:7px;
+    padding:3px 5px;
   }
 
   .hero-inner{
