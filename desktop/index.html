@@ -3,336 +3,340 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Elite House | Home</title>
+<title>Elite House</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/desktop-index.css">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:Arial, sans-serif;
+  background:#000;
+  color:#fff;
+  overflow-x:hidden;
+}
+
+/* 🔥 UPDATED HEADER (SAFE) */
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(0,0,0,0.6);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(0,255,212,0.15);
+  padding:12px 0;
+}
+
+nav{
+  display:flex;
+  justify-content:center;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+/* 🔥 TEAL NAV */
+nav a{
+  color:#00f5d4;
+  text-decoration:none;
+  font-size:14px;
+  position:relative;
+  transition:0.25s ease;
+}
+
+/* glow */
+nav a:hover{
+  color:#00ffe5;
+  text-shadow:0 0 10px rgba(0,255,229,0.6);
+}
+
+/* underline animation */
+nav a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-4px;
+  width:0;
+  height:2px;
+  background:#00f5d4;
+  transition:0.3s ease;
+}
+
+nav a:hover::after{
+  width:100%;
+}
+
+/* HERO */
+.hero{
+  padding:10px;
+}
+.hero img{
+  width:100%;
+  border-radius:12px;
+}
+
+/* SECTION */
+.section{
+  margin:30px 15px;
+}
+
+/* TITLE */
+.section-title{
+  font-family:'Permanent Marker', cursive;
+  font-size:26px;
+  text-align:center;
+  color:#b84cff;
+  margin-bottom:20px;
+}
+
+/* SCROLL ROWS */
+.brands,
+.deals,
+.experience{
+  display:flex;
+  gap:12px;
+  overflow-x:auto;
+  scroll-snap-type:x proximity;
+}
+
+.brands::-webkit-scrollbar,
+.deals::-webkit-scrollbar,
+.experience::-webkit-scrollbar{
+  display:none;
+}
+
+/* ITEMS */
+.brands img,
+.deals img,
+.experience img{
+  scroll-snap-align:center;
+  border-radius:12px;
+}
+
+/* SIZES */
+.brands img{ height:70px; }
+.deals img{ flex:0 0 85%; max-width:320px; }
+.experience img{ flex:0 0 80%; max-width:300px; }
+
+/* VISIT */
+.visit{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+/* MAP */
+iframe{
+  width:100%;
+  height:160px;
+  border:none;
+  border-radius:12px;
+  filter:brightness(0.6) contrast(1.1) saturate(0.8);
+  opacity:0.9;
+}
+
+/* IMAGE */
+.visit img{
+  width:100%;
+  max-height:160px;
+  object-fit:contain;
+  border-radius:12px;
+}
+
+/* INTERACTIVE */
+.visit-card{
+  display:block;
+  position:relative;
+  border-radius:12px;
+  overflow:hidden;
+  transition:transform .2s ease;
+}
+
+.visit-card:active{
+  transform:scale(.96);
+}
+
+.visit-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:12px;
+  background:rgba(0,0,0,0.25);
+  pointer-events:none;
+}
+
+.visit-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:12px;
+  box-shadow:0 0 20px rgba(0,255,255,0.25);
+  opacity:0;
+  transition:.3s;
+}
+
+.visit-card:hover::after,
+.visit-card:active::after{
+  opacity:1;
+}
+
+.visit-card iframe{
+  pointer-events:none;
+}
+
+/* POPUP */
+.popup{
+  position:fixed;
+  inset:0;
+  background:#000;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+}
+
+.popup-box{
+  background:#111;
+  padding:30px;
+  border-radius:12px;
+  text-align:center;
+}
+
+.popup-box h2{
+  color:#b84cff;
+}
+
+.popup-buttons{
+  display:flex;
+  gap:10px;
+  justify-content:center;
+  margin-top:15px;
+}
+
+.enter-btn,
+.exit-btn{
+  padding:10px 20px;
+  border:none;
+  border-radius:8px;
+  color:#fff;
+  cursor:pointer;
+}
+
+.enter-btn{background:#b84cff;}
+.exit-btn{background:#333;}
+
+/* SMOKE */
+.smoke{
+  position:fixed;
+  inset:0;
+  background:url('https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166332/vape-store-background_jwo2nr.png') center/cover;
+  opacity:0;
+  pointer-events:none;
+  z-index:5;
+}
+
+.fade-in{animation:smokeIn 1.5s forwards;}
+.fade-out{animation:smokeOut 2s forwards;}
+
+@keyframes smokeIn{
+  from{opacity:0;}
+  to{opacity:.6;}
+}
+@keyframes smokeOut{
+  from{opacity:.6;}
+  to{opacity:0;}
+}
+
+</style>
 </head>
 
-<body class="age-lock">
+<body>
 
-<!-- AGE VIDEO POPUP -->
-<div class="age-overlay" id="ageOverlay">
-
-  <video
-    id="smokeClip1"
-    class="age-video active-video"
-    autoplay
-    muted
-    playsinline
-    preload="auto"
-  >
-    <source src="https://res.cloudinary.com/dovrzmlqj/video/upload/f_auto,q_auto/v1777478247/smoke-clip1_ect2wb.mp4" type="video/mp4">
-  </video>
-
-  <video
-    id="smokeClip2"
-    class="age-video"
-    muted
-    playsinline
-    preload="auto"
-  >
-    <source src="https://res.cloudinary.com/dovrzmlqj/video/upload/f_auto,q_auto/v1777241822/smoke-clip2_yjhhjb.mp4" type="video/mp4">
-  </video>
-
-  <div class="age-popup-box" id="agePopupBox">
+<!-- POPUP -->
+<div class="popup" id="popup">
+  <div class="popup-box">
     <h2>21+ Only</h2>
     <p>Are you 21 years or older?</p>
-
     <div class="popup-buttons">
-      <button class="enter-btn" type="button" onclick="chooseAge('yes')">Yes</button>
-      <button class="exit-btn" type="button" onclick="chooseAge('no')">No</button>
+      <button class="enter-btn" onclick="enter()">Enter</button>
+      <button class="exit-btn" onclick="exitSite()">No</button>
     </div>
   </div>
-
 </div>
 
-<!-- WEBSITE CONTENT -->
-<div class="site-content">
+<div class="smoke" id="smoke"></div>
 
-  <div class="warning-banner">
-    ADVERTENCIA: Este producto contiene nicotina. La nicotina es adictiva.
-  </div>
+<header>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Brands</a>
+    <a href="#">Deals</a>
+    <a href="#">Experience</a>
+    <a href="#">Location</a>
+  </nav>
+</header>
 
-  <!-- HERO -->
-  <section class="hero">
+<section class="hero">
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166401/smoke-shop-hero_agqdzt.png">
+</section>
 
-    <header class="site-header">
+<section class="section">
+<div class="section-title">Brands We Carry</div>
+<div class="brands">
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166394/ChatGPT_Image_Apr_25_2026_08_04_39_PM_oasjiq.png">
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166383/ChatGPT_Image_Apr_25_2026_08_04_53_PM_bbgx5p.png">
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166399/ChatGPT_Image_Apr_25_2026_08_04_30_PM_odwlza.png">
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166357/ChatGPT_Image_Apr_25_2026_08_04_22_PM_rzy4zs.png">
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166383/ChatGPT_Image_Apr_25_2026_08_15_55_PM_sirvsz.png">
+</div>
+</section>
 
-      <nav class="nav-links" aria-label="Main navigation">
-        <a class="active" href="index.html">Home</a>
+<section class="section">
+<div class="deals">
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166326/geekbar-ad_uuxqsz.png">
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166330/raz-ad_n40a57.png">
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166331/bundle-ad_qxcqcr.png">
+</div>
+</section>
 
-        <a class="disabled-link" href="#" onclick="return false;">
-          Brands
-          <span>Coming Soon</span>
-        </a>
+<section class="section">
+<div class="experience">
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777238327/the-elite-experience_nz4xtu.png">
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166375/outside_wqh4vb.png">
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166379/inside-1_qwqhxc.png">
+<img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166379/inside-2_hots3k.png">
+</div>
+</section>
 
-        <a class="disabled-link" href="#" onclick="return false;">
-          Deals
-          <span>Coming Soon</span>
-        </a>
+<section class="section">
+<div class="visit">
 
-        <a class="disabled-link" href="#" onclick="return false;">
-          Experience
-          <span>Coming Soon</span>
-        </a>
+<a href="https://www.google.com/maps?q=Elite+House+Smoke+Shop+San+Juan" class="visit-card">
+  <iframe src="https://www.google.com/maps?q=Elite+House+Smoke+Shop+San+Juan&output=embed"></iframe>
+</a>
 
-        <a class="disabled-link" href="#" onclick="return false;">
-          Location
-          <span>Coming Soon</span>
-        </a>
-
-        <a class="disabled-link" href="#" onclick="return false;">
-          Policies
-          <span>Coming Soon</span>
-        </a>
-      </nav>
-
-    </header>
-
-    <div class="hero-inner">
-      <div class="hero-copy">
-        <p class="hero-small">Welcome To</p>
-        <h1>Elite<br>House</h1>
-        <p class="hero-sub">Premium vapes.<br>Next level experience.</p>
-        <a class="outline-button" href="#experience">Step Inside <span>→</span></a>
-      </div>
-    </div>
-
-  </section>
-
-  <!-- BRANDS -->
-  <section class="section-block brands-section">
-    <div class="section-container">
-
-      <h2 class="section-title">
-        <span>♛</span>
-        Brands We Carry
-      </h2>
-
-      <div class="brand-row">
-        <button class="side-arrow" aria-label="Previous brand">‹</button>
-
-        <div class="brand-preview">
-          <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto/v1777166394/ChatGPT_Image_Apr_25_2026_08_04_39_PM_oasjiq.png" alt="Geek Bar">
-          <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto/v1777166383/ChatGPT_Image_Apr_25_2026_08_04_53_PM_bbgx5p.png" alt="Raz">
-          <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto/v1777166399/ChatGPT_Image_Apr_25_2026_08_04_30_PM_odwlza.png" alt="Elf Bar">
-          <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto/v1777166357/ChatGPT_Image_Apr_25_2026_08_04_22_PM_rzy4zs.png" alt="Flum">
-        </div>
-
-        <button class="side-arrow" aria-label="Next brand">›</button>
-      </div>
-
-      <div class="button-row">
-        <a class="outline-button coming-soon-button" href="#" onclick="return false;">View All Brands</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- DEALS -->
-  <section class="section-block deals-section">
-    <div class="section-container">
-
-      <h2 class="section-title">Deals This Week</h2>
-
-      <div class="deal-preview">
-        <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto/v1777166326/geekbar-ad_uuxqsz.png" alt="Geek Bar deals">
-        <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto/v1777166330/raz-ad_n40a57.png" alt="Raz specials">
-        <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto/v1777166331/bundle-ad_qxcqcr.png" alt="Bundle offers">
-      </div>
-
-      <div class="button-row">
-        <a class="outline-button coming-soon-button" href="#" onclick="return false;">See All Deals</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section class="section-block experience-section" id="experience">
-    <div class="experience-layout">
-
-      <div class="experience-copy">
-        <h2>The Elite<br>Experience</h2>
-        <p>More than a smoke shop.<br>It’s a vibe.</p>
-        <a class="outline-button coming-soon-button" href="#" onclick="return false;">See Inside</a>
-      </div>
-
-      <button class="side-arrow exp-arrow" aria-label="Previous image">‹</button>
-
-      <div class="experience-gallery">
-        <div class="experience-card card-one">
-          <span>Storefront</span>
-        </div>
-
-        <div class="experience-card card-two">
-          <span>Inside The Shop</span>
-        </div>
-
-        <div class="experience-card card-three">
-          <span>Neon Vibe</span>
-        </div>
-      </div>
-
-      <button class="side-arrow exp-arrow" aria-label="Next image">›</button>
-
-    </div>
-  </section>
-
-  <!-- VISIT -->
-  <section class="section-block visit-section">
-    <div class="visit-layout">
-
-      <div class="visit-info">
-        <h2>Visit Us</h2>
-
-        <div class="visit-item">
-          <span>⌖</span>
-          <p>1461 Ashford Ave<br>San Juan, PR 00907</p>
-        </div>
-
-        <div class="visit-item">
-          <span>◷</span>
-          <p><strong>Open Everyday</strong><br>10:00AM - 10:00PM</p>
-        </div>
-
-        <div class="visit-item">
-          <span>◎</span>
-          <p><strong>Follow Us</strong><br>@elitehousesmokeshop</p>
-        </div>
-      </div>
-
-      <div class="map-card">
-        <iframe
-          title="Elite House Smoke Shop Map"
-          src="https://www.google.com/maps?q=1461%20Ashford%20Ave%20San%20Juan%20PR%2000907&output=embed"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-      </div>
-
-      <div class="visit-cta">
-        <h2>Step Inside<br><span>Discover More</span></h2>
-        <a class="outline-button coming-soon-button" href="#" onclick="return false;">Get Directions <span>→</span></a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="site-footer">
-
-    <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/f_auto,q_auto/v1777241822/logo_nervcx.png" alt="Elite House Smoke Shop Logo">
-
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="#" onclick="return false;">Brands</a>
-      <a href="#" onclick="return false;">Deals</a>
-      <a href="#" onclick="return false;">Experience</a>
-      <a href="#" onclick="return false;">Location</a>
-      <a href="#" onclick="return false;">Policies</a>
-    </nav>
-
-    <p>Premium products. Real people. Elite service.</p>
-    <small>© 2026 Elite House Smoke Shop. All rights reserved.</small>
-
-  </footer>
+<a href="https://www.google.com/maps/dir/?api=1&destination=Elite+House+Smoke+Shop+San+Juan" class="visit-card">
+  <img src="https://res.cloudinary.com/dovrzmlqj/image/upload/v1777166326/step-inside_u9hdex.png">
+</a>
 
 </div>
+</section>
 
 <script>
-const ageOverlay = document.getElementById("ageOverlay");
-const agePopupBox = document.getElementById("agePopupBox");
-const smokeClip1 = document.getElementById("smokeClip1");
-const smokeClip2 = document.getElementById("smokeClip2");
+function enter(){
+  document.getElementById("popup").style.display="none";
 
-let userChoice = null;
-let clip1Finished = false;
-let clip2Started = false;
+  const smoke = document.getElementById("smoke");
+  smoke.classList.add("fade-in");
 
-function unlockSiteImmediately(){
-  document.body.classList.remove("age-lock");
-  document.body.classList.add("age-complete");
-
-  ageOverlay.style.display = "none";
-  smokeClip1.pause();
-  smokeClip2.pause();
+  setTimeout(()=>{
+    smoke.classList.remove("fade-in");
+    smoke.classList.add("fade-out");
+  },1200);
 }
 
-window.addEventListener("load", () => {
-  const alreadyApproved = localStorage.getItem("eliteHouseAgeApproved");
-
-  if(alreadyApproved === "yes"){
-    unlockSiteImmediately();
-    return;
-  }
-
-  smokeClip1.play().catch(() => {});
-});
-
-smokeClip1.addEventListener("ended", () => {
-  clip1Finished = true;
-
-  if(userChoice){
-    playClip2();
-  }
-});
-
-smokeClip2.addEventListener("ended", () => {
-  finishAgeGate();
-});
-
-function chooseAge(choice){
-  if(userChoice) return;
-
-  userChoice = choice;
-
-  agePopupBox.classList.add("popup-hide");
-  ageOverlay.classList.add("transition-mode");
-
-  smokeClip1.play().catch(() => {
-    clip1Finished = true;
-    playClip2();
-  });
-
-  if(smokeClip1.ended || clip1Finished){
-    playClip2();
-  }
-}
-
-function playClip2(){
-  if(clip2Started) return;
-
-  clip2Started = true;
-
-  smokeClip1.classList.remove("active-video");
-  smokeClip2.classList.add("active-video");
-
-  smokeClip2.currentTime = 0;
-
-  smokeClip2.play().catch(() => {
-    finishAgeGate();
-  });
-}
-
-function finishAgeGate(){
-  if(userChoice === "no"){
-    window.location.href = "https://google.com";
-    return;
-  }
-
-  localStorage.setItem("eliteHouseAgeApproved", "yes");
-
-  document.body.classList.remove("age-lock");
-  document.body.classList.add("age-complete");
-
-  ageOverlay.classList.add("overlay-hide");
-
-  setTimeout(() => {
-    ageOverlay.style.display = "none";
-  }, 900);
+function exitSite(){
+  window.location.href="https://google.com";
 }
 </script>
 
