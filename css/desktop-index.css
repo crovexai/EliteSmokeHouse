@@ -71,9 +71,10 @@ img {
       rgba(0, 0, 0, 0.32) 58%,
       rgba(0, 0, 0, 0.72) 100%
     ),
-    url("https://images.unsplash.com/photo-1544473244-f6895e69ad8b?auto=format&fit=crop&w=2400&q=90");
+    url("https://res.cloudinary.com/dovrzmlqj/image/upload/v1777816928/Hero-Smoke_pghcpv.png");
   background-size: cover;
   background-position: center right;
+  background-repeat: no-repeat;
   filter: saturate(1.55) contrast(1.25) brightness(0.7);
 }
 
