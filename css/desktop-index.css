@@ -157,9 +157,9 @@ img {
   position: relative;
   z-index: 10;
   height: 150px;
-  padding: 38px 88px 0;
+  padding: 30px 88px 0;
   display: grid;
-  grid-template-columns: 170px 1fr 120px;
+  grid-template-columns: 220px 1fr 160px;
   align-items: start;
 }
 
@@ -184,17 +184,18 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 58px;
-  padding-top: 12px;
+  gap: 95px;
+  padding-top: 10px;
 }
 
 .nav a {
   position: relative;
-  font-size: 13px;
+  font-size: 22px;
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  color: rgba(255, 255, 255, 0.82);
+  letter-spacing: 1.6px;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1;
   transition: color 0.25s ease;
 }
 
@@ -207,12 +208,12 @@ img {
   content: "";
   position: absolute;
   left: 50%;
-  bottom: -12px;
-  width: 52px;
-  height: 3px;
+  bottom: -16px;
+  width: 78px;
+  height: 5px;
   transform: translateX(-50%);
   background: linear-gradient(90deg, #ff7a00, #ffc36a);
-  box-shadow: 0 0 12px rgba(255, 125, 0, 0.85);
+  box-shadow: 0 0 14px rgba(255, 125, 0, 0.9);
 }
 
 .socials {
