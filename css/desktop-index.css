@@ -710,13 +710,14 @@ img {
 /* LOCATION */
 
 .location-section {
-  min-height: 520px;
-  padding-top: 70px;
-  padding-bottom: 70px;
+  min-height: 320px;
+  padding-top: 28px;
+  padding-bottom: 28px;
   display: grid;
-  grid-template-columns: 230px minmax(620px, 1fr) 280px;
+  grid-template-columns: 220px 860px 240px;
+  justify-content: center;
   align-items: center;
-  gap: 36px;
+  gap: 34px;
   background:
     radial-gradient(circle at 78% 46%, rgba(147, 0, 255, 0.24), transparent 28%),
     radial-gradient(circle at 95% 65%, rgba(0, 255, 255, 0.16), transparent 22%),
@@ -749,10 +750,10 @@ img {
 }
 
 .visit-info {
-  margin-top: 42px;
+  margin-top: 34px;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 24px;
 }
 
 .info-item {
@@ -786,8 +787,7 @@ img {
 
 .map-card {
   width: 100%;
-  max-width: 1280px;
-  height: 360px;
+  height: 230px;
   border-radius: 8px;
   overflow: hidden;
   border: 1px solid rgba(0, 255, 255, 0.32);
@@ -806,8 +806,8 @@ img {
 
 .step-card {
   width: 100%;
-  min-height: 320px;
-  padding: 34px 22px 28px;
+  min-height: 230px;
+  padding: 24px 18px 20px;
   overflow: visible;
   border-radius: 12px;
 }
@@ -824,10 +824,10 @@ img {
 .step-card::after {
   content: "";
   position: absolute;
-  right: -100px;
+  right: -90px;
   top: -35px;
-  width: 340px;
-  height: 310px;
+  width: 300px;
+  height: 280px;
   background:
     radial-gradient(circle at 34% 45%, rgba(177, 83, 255, 0.44), transparent 28%),
     radial-gradient(circle at 56% 62%, rgba(0, 255, 255, 0.25), transparent 25%);
@@ -839,7 +839,7 @@ img {
   position: relative;
   z-index: 2;
   color: #ff9300;
-  font-size: 60px;
+  font-size: 48px;
   transform: rotate(-20deg);
   text-shadow: 0 0 12px rgba(255, 145, 0, 0.82);
 }
@@ -847,8 +847,8 @@ img {
 .step-card h2 {
   position: relative;
   z-index: 2;
-  margin-top: -6px;
-  font-size: 38px;
+  margin-top: -4px;
+  font-size: 30px;
   line-height: 1.04;
   color: #00f6ff;
   transform: rotate(-3deg);
@@ -863,7 +863,7 @@ img {
   position: relative;
   z-index: 2;
   margin-left: 0;
-  margin-top: 28px;
+  margin-top: 18px;
 }
 
 /* FOOTER */
