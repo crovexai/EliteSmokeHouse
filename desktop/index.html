@@ -227,7 +227,6 @@
   <div class="video-intro" id="videoIntro" aria-hidden="true">
     <video
       id="introVideo"
-      muted
       playsinline
       preload="auto"
     >
@@ -572,11 +571,18 @@
     function startIntroVideo() {
       ageGate.classList.add("is-hidden");
 
+      introVideo.muted = false;
+      introVideo.volume = 1;
+
       const playPromise = introVideo.play();
 
       if (playPromise !== undefined) {
         playPromise.catch(() => {
-          fadeOutIntro();
+          introVideo.muted = true;
+
+          introVideo.play().catch(() => {
+            fadeOutIntro();
+          });
         });
       }
     }
