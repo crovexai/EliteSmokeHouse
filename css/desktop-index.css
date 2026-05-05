@@ -709,13 +709,13 @@ img {
 
 .location-v2 {
   position: relative;
-  min-height: 430px;
-  padding: 42px 68px;
+  min-height: 460px;
+  padding: 54px 68px;
   overflow: hidden;
   border-bottom: 1px solid rgba(128, 0, 255, 0.35);
   background:
-    radial-gradient(circle at 18% 40%, rgba(140, 0, 255, 0.24), transparent 28%),
-    radial-gradient(circle at 88% 68%, rgba(0, 255, 255, 0.18), transparent 28%),
+    radial-gradient(circle at 14% 42%, rgba(140, 0, 255, 0.32), transparent 28%),
+    radial-gradient(circle at 92% 68%, rgba(0, 255, 255, 0.22), transparent 28%),
     radial-gradient(circle at 72% 30%, rgba(255, 120, 0, 0.12), transparent 24%),
     #08000f;
 }
@@ -725,53 +725,124 @@ img {
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(circle at 5% 55%, rgba(176, 0, 255, 0.24), transparent 24%),
-    radial-gradient(circle at 93% 84%, rgba(0, 255, 255, 0.28), transparent 18%),
-    radial-gradient(circle at 82% 22%, rgba(255, 132, 0, 0.16), transparent 20%);
-  opacity: 0.9;
+    radial-gradient(circle at 5% 55%, rgba(176, 0, 255, 0.2), transparent 24%),
+    radial-gradient(circle at 94% 84%, rgba(0, 255, 255, 0.32), transparent 20%),
+    radial-gradient(circle at 82% 22%, rgba(255, 132, 0, 0.15), transparent 20%);
+  opacity: 0.95;
 }
 
 .location-v2-inner {
   position: relative;
   z-index: 2;
-  width: min(1320px, 100%);
+  width: min(1380px, 100%);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 380px minmax(0, 1fr);
+  grid-template-columns: 440px minmax(0, 1fr);
   align-items: stretch;
-  justify-content: center;
-  gap: 34px;
+  gap: 38px;
 }
 
-/* LEFT VISIT IMAGE */
+/* LEFT CODED VISIT CARD */
 
-.location-v2-photo {
-  width: 100%;
-  height: 330px;
+.location-v2-card {
+  position: relative;
+  min-height: 350px;
+  padding: 42px 42px 38px;
+  border-radius: 14px;
   overflow: hidden;
-  border-radius: 9px;
-  background: #050009;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(147, 0, 255, 0.22), transparent 34%),
+    linear-gradient(145deg, rgba(10, 0, 18, 0.96), rgba(0, 0, 0, 0.92));
+  border: 1px solid rgba(185, 108, 255, 0.24);
+  box-shadow:
+    0 0 24px rgba(128, 0, 255, 0.26),
+    inset 0 0 22px rgba(255, 255, 255, 0.035);
 }
 
-.location-v2-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
+.location-v2-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 90% 18%, rgba(0, 255, 255, 0.12), transparent 26%),
+    radial-gradient(circle at 0% 90%, rgba(255, 145, 0, 0.1), transparent 26%);
+  pointer-events: none;
+}
+
+.location-v2-card h2 {
+  position: relative;
+  z-index: 2;
+  font-family: "Permanent Marker", cursive;
+  font-size: 58px;
+  line-height: 1;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  transform: rotate(-3deg);
+  text-shadow:
+    0 0 9px rgba(255, 255, 255, 0.28),
+    0 0 18px rgba(0, 0, 0, 0.55);
+}
+
+.location-v2-underline {
+  position: relative;
+  z-index: 2;
+  width: 150px;
+  height: 6px;
+  margin-top: 12px;
+  margin-bottom: 36px;
+  background: linear-gradient(90deg, #ff8d00, transparent);
+  box-shadow: 0 0 12px rgba(255, 141, 0, 0.78);
+  transform: rotate(-3deg);
+}
+
+.location-v2-info-list {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.location-v2-info-item {
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  align-items: center;
+  gap: 20px;
+}
+
+.location-v2-info-item i {
+  color: #b96cff;
+  font-size: 32px;
+  text-shadow:
+    0 0 10px rgba(185, 108, 255, 0.75),
+    0 0 18px rgba(185, 108, 255, 0.35);
+}
+
+.location-v2-info-item strong {
   display: block;
-  background: transparent;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 900;
+  line-height: 1.22;
+}
+
+.location-v2-info-item span {
+  display: block;
+  margin-top: 6px;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 1.32;
 }
 
 /* RIGHT MAP */
 
 .location-v2-map {
   width: 100%;
-  height: 330px;
+  min-height: 350px;
   overflow: hidden;
-  border-radius: 9px;
+  border-radius: 14px;
   border: 1px solid rgba(255, 255, 255, 0.36);
   background: #050009;
   box-shadow:
@@ -782,6 +853,7 @@ img {
 .location-v2-map iframe {
   width: 100%;
   height: 100%;
+  min-height: 350px;
   display: block;
   border: 0;
   filter: invert(0.9) hue-rotate(180deg) saturate(0.85) brightness(0.58) contrast(1.18);
