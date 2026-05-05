@@ -709,7 +709,7 @@ img {
 
 .location-v2 {
   position: relative;
-  min-height: 410px;
+  min-height: 430px;
   padding: 42px 68px;
   overflow: hidden;
   border-bottom: 1px solid rgba(128, 0, 255, 0.35);
@@ -734,19 +734,26 @@ img {
 .location-v2-inner {
   position: relative;
   z-index: 2;
-  width: 100%;
+  width: min(1320px, 100%);
+  margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 380px minmax(0, 1fr);
   align-items: stretch;
+  justify-content: center;
   gap: 34px;
 }
 
+/* LEFT VISIT IMAGE */
+
 .location-v2-photo {
   width: 100%;
-  height: 315px;
+  height: 330px;
   overflow: hidden;
   border-radius: 9px;
-  background: transparent;
+  background: #050009;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .location-v2-photo img {
@@ -758,9 +765,11 @@ img {
   background: transparent;
 }
 
+/* RIGHT MAP */
+
 .location-v2-map {
   width: 100%;
-  height: 315px;
+  height: 330px;
   overflow: hidden;
   border-radius: 9px;
   border: 1px solid rgba(255, 255, 255, 0.36);
