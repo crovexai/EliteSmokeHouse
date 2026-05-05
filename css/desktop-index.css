@@ -710,13 +710,13 @@ img {
 /* LOCATION */
 
 .location-section {
-  min-height: 410px;
-  padding-top: 48px;
-  padding-bottom: 48px;
+  min-height: 440px;
+  padding-top: 56px;
+  padding-bottom: 56px;
   display: grid;
-  grid-template-columns: 260px 1fr 330px;
+  grid-template-columns: 210px minmax(520px, 1fr) 300px;
   align-items: center;
-  gap: 46px;
+  gap: 32px;
   background:
     radial-gradient(circle at 78% 46%, rgba(147, 0, 255, 0.24), transparent 28%),
     radial-gradient(circle at 95% 65%, rgba(0, 255, 255, 0.16), transparent 22%),
@@ -732,9 +732,10 @@ img {
 }
 
 .visit-card h2 {
-  font-size: 48px;
+  font-size: 44px;
   line-height: 1;
   transform: rotate(-3deg);
+  white-space: nowrap;
 }
 
 .visit-card h2::after {
@@ -748,29 +749,29 @@ img {
 }
 
 .visit-info {
-  margin-top: 48px;
+  margin-top: 42px;
   display: flex;
   flex-direction: column;
-  gap: 34px;
+  gap: 30px;
 }
 
 .info-item {
   display: grid;
-  grid-template-columns: 40px 1fr;
-  gap: 18px;
+  grid-template-columns: 32px 1fr;
+  gap: 14px;
   align-items: center;
 }
 
 .info-item i {
   color: #b96cff;
-  font-size: 28px;
+  font-size: 24px;
   text-shadow: 0 0 12px rgba(169, 84, 255, 0.6);
 }
 
 .info-item strong {
   display: block;
   color: #fff;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 900;
   line-height: 1.25;
 }
@@ -779,15 +780,16 @@ img {
   display: block;
   margin-top: 2px;
   color: rgba(255, 255, 255, 0.86);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
 }
 
 .map-card {
-  height: 270px;
+  width: 100%;
+  height: 300px;
   border-radius: 8px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.32);
+  border: 1px solid rgba(0, 255, 255, 0.32);
   box-shadow:
     0 0 28px rgba(128, 0, 255, 0.24),
     inset 0 0 20px rgba(255, 255, 255, 0.06);
@@ -798,13 +800,15 @@ img {
   width: 100%;
   height: 100%;
   border: 0;
-  filter: saturate(1.08) brightness(1.03) contrast(1.03);
+  filter: saturate(1.08) brightness(0.95) contrast(1.03);
 }
 
 .step-card {
-  min-height: 250px;
-  padding-top: 20px;
-  overflow: hidden;
+  width: 100%;
+  min-height: 300px;
+  padding: 34px 22px 28px;
+  overflow: visible;
+  border-radius: 12px;
 }
 
 .step-card::before {
@@ -819,10 +823,10 @@ img {
 .step-card::after {
   content: "";
   position: absolute;
-  right: -140px;
-  top: -40px;
-  width: 380px;
-  height: 330px;
+  right: -100px;
+  top: -35px;
+  width: 340px;
+  height: 310px;
   background:
     radial-gradient(circle at 34% 45%, rgba(177, 83, 255, 0.44), transparent 28%),
     radial-gradient(circle at 56% 62%, rgba(0, 255, 255, 0.25), transparent 25%);
@@ -834,7 +838,7 @@ img {
   position: relative;
   z-index: 2;
   color: #ff9300;
-  font-size: 80px;
+  font-size: 60px;
   transform: rotate(-20deg);
   text-shadow: 0 0 12px rgba(255, 145, 0, 0.82);
 }
@@ -842,11 +846,12 @@ img {
 .step-card h2 {
   position: relative;
   z-index: 2;
-  margin-top: -12px;
-  font-size: 47px;
-  line-height: 1.03;
+  margin-top: -6px;
+  font-size: 39px;
+  line-height: 1.04;
   color: #00f6ff;
-  transform: rotate(-4deg);
+  transform: rotate(-3deg);
+  max-width: 100%;
 }
 
 .step-card h2 span {
@@ -856,8 +861,8 @@ img {
 .directions-btn {
   position: relative;
   z-index: 2;
-  margin-left: 20px;
-  margin-top: 38px;
+  margin-left: 0;
+  margin-top: 28px;
 }
 
 /* FOOTER */
@@ -898,7 +903,7 @@ img {
 .footer-center small {
   display: block;
   margin-top: 28px;
-  color: rgba(255, 255, 255, 0.68);
+  color: rgba(255, 255, 255, 0.7);
   font-size: 11px;
 }
 
