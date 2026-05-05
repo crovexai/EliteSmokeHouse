@@ -589,14 +589,13 @@ img {
   height: auto;
   overflow: hidden;
   border-radius: 9px;
-  background: #050009;
+  background: transparent;
 }
 
 .image-deal-card {
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  box-shadow:
-    0 0 20px rgba(128, 0, 255, 0.26),
-    inset 0 0 18px rgba(255, 255, 255, 0.05);
+  border: none;
+  box-shadow: none;
+  background: transparent;
 }
 
 .deal-ad-image {
@@ -604,7 +603,7 @@ img {
   height: 100%;
   object-fit: contain;
   object-position: center;
-  background: #050009;
+  background: transparent;
   filter: saturate(1.08) contrast(1.04) brightness(1);
 }
 
@@ -690,6 +689,7 @@ img {
   gap: 8px;
   overflow: visible;
   align-items: center;
+  background: transparent;
 }
 
 .experience-gallery img {
@@ -699,7 +699,7 @@ img {
   object-fit: contain;
   object-position: center;
   border-radius: 5px;
-  background: #050009;
+  background: transparent;
   filter: saturate(1.18) contrast(1.05) brightness(1);
 }
 
