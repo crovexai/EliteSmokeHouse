@@ -517,7 +517,7 @@ img {
   min-height: 82px;
   display: flex;
   align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: flex-end;
 }
 
 .logo {
@@ -563,26 +563,26 @@ img {
   z-index: 6;
   flex: 1;
   min-height: calc(100svh - 120px);
-  padding: 40px 18px 130px;
+  padding: 0 18px 54px;
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  align-items: flex-end;
+  justify-content: center;
 }
 
 .hero-copy {
   position: relative;
-  width: min(100%, 370px);
+  width: min(100%, 390px);
   margin: 0 auto;
-  text-align: left;
+  text-align: center;
 }
 
 .hero-crown {
   position: absolute;
-  left: 54%;
-  top: -42px;
+  left: 50%;
+  top: -44px;
   color: #ff9a00;
   font-size: 54px;
-  transform: rotate(-14deg);
+  transform: translateX(-50%) rotate(-14deg);
   text-shadow:
     0 0 12px rgba(255, 145, 0, 0.8),
     0 0 20px rgba(0, 0, 0, 0.35);
@@ -652,21 +652,6 @@ img {
   font-weight: 900;
   letter-spacing: 1.4px;
   text-transform: uppercase;
-}
-
-.hero-step-btn {
-  position: absolute;
-  z-index: 8;
-  left: 18px;
-  bottom: 34px;
-  min-width: 126px;
-  min-height: 36px;
-  margin: 0;
-  padding: 0 15px;
-  font-size: 9px;
-  gap: 7px;
-  transform: scale(0.75);
-  transform-origin: left bottom;
 }
 
 .neon-btn.small {
@@ -1210,6 +1195,7 @@ img {
   .hero-content {
     padding-left: 14px;
     padding-right: 14px;
+    padding-bottom: 48px;
   }
 
   .section-heading,
@@ -1259,6 +1245,7 @@ img {
   .hero-content {
     padding-left: 28px;
     padding-right: 28px;
+    padding-bottom: 72px;
   }
 
   .hero-copy {
